@@ -7,18 +7,28 @@ import { FooterComponent } from './footer/footer.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import {RouteModule} from './route/route.module';
 import {RouterModule} from '@angular/router';
+import { ProductComponent } from './product/product.component';
+import {MatButtonModule, MatGridListModule, MatIconModule, MatListModule, MatMenuModule} from '@angular/material';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    MainPageComponent
+    MainPageComponent,
+    ProductComponent
   ],
   imports: [
     BrowserModule,
     RouteModule,
-    RouterModule
+    RouterModule,
+    MatMenuModule,
+    BrowserAnimationsModule,
+    MatIconModule,
+    MatGridListModule,
+    MatListModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,5 +1,11 @@
 <app-header></app-header>
-<p>
-  This is the main page
-</p>
+<mat-grid-list cols="4" rowHeight="200px" gutterSize="15">
+  <mat-grid-tile *ngFor="let tile of tiles; let i = index"
+                 [colspan]="tile.cols" [rowspan]="tile.rows" [ngClass]="tile.class">
+    <div [routerLink]="['product', i+1]" class="box-text">
+      {{tile.text}}
+    </div>
+
+  </mat-grid-tile>
+</mat-grid-list>
 <app-footer></app-footer>

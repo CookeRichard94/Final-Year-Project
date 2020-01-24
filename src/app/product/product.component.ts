@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
+import {StoreInfoService} from '../store-info.service';
 
 @Component({
   selector: 'app-product',
@@ -8,11 +9,17 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class ProductComponent implements OnInit {
   index: number;
-
-  constructor(private route: ActivatedRoute) { }
+  productInfo: any;
+  constructor(private route: ActivatedRoute, private storeInfo: StoreInfoService) { }
 
   ngOnInit() {
-    this.route.params.subscribe(params => this.index = params.id);
+    this.route.params.subscribe(params =>{
+      this.index = params.id;
+      this.productInfo = this.storeInfo.tiles.reduce((obj, item) => {
+        // tslint:disable-next-line:triple-equals
+        return +this.index == item.id ? item : obj;
+      }, {});
+    });
   }
 
 }

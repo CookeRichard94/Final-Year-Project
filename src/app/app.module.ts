@@ -10,6 +10,7 @@ import {RouterModule} from '@angular/router';
 import { ProductComponent } from './product/product.component';
 import {MatButtonModule, MatGridListModule, MatIconModule, MatListModule, MatMenuModule} from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { StoreInfoService } from './store-info.service';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     MatListModule,
     MatButtonModule
   ],
-  providers: [],
+  providers: [StoreInfoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

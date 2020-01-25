@@ -11,6 +11,7 @@ import { ProductComponent } from './product/product.component';
 import {MatButtonModule, MatGridListModule, MatIconModule, MatListModule, MatMenuModule} from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { StoreInfoService } from './store-info.service';
+import {CoreModule} from './core/core.module';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { StoreInfoService } from './store-info.service';
     MatIconModule,
     MatGridListModule,
     MatListModule,
-    MatButtonModule
+    MatButtonModule,
+    CoreModule
   ],
   providers: [StoreInfoService],
   bootstrap: [AppComponent]

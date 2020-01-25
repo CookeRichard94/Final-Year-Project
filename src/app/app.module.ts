@@ -12,6 +12,7 @@ import {MatButtonModule, MatGridListModule, MatIconModule, MatListModule, MatMen
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { StoreInfoService } from './store-info.service';
 import {CoreModule} from './core/core.module';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import {CoreModule} from './core/core.module';
     HeaderComponent,
     FooterComponent,
     MainPageComponent,
-    ProductComponent
+    ProductComponent,
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,

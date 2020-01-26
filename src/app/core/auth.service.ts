@@ -11,7 +11,7 @@ import { switchMap} from 'rxjs/operators';
 interface User {
   uid: string;
   email: string;
-  userDisplayName?: string;
+  userDisplayName: string;
 }
 
 

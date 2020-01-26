@@ -1,14 +1,23 @@
 <div class = "mat-app-background basic-container">
-  <div *ngIf="auth.user$ | async as user; else login">
-    <pre>
+  <div class="logOutDiv" *ngIf="auth.user$ | async as user; else login">
+    <!--<pre>
       {{user|json}}
-    </pre>
-    <button class="button" (click)="auth.signOut()">Sign Out</button>
+    </pre>-->
+    <mat-toolbar>
+      <p>Welcome, {{user.displayName}}</p>
+      <img [src]="user.photoURL" height="40" width="40">
+      <button class="button" (click)="auth.signOut()">Sign Out</button>
+    </mat-toolbar>
   </div>
 
-  <ng-template #login>
-    <button class="button" (click)="auth.googleSignIn()">Login with Google</button>
-  </ng-template>
+  <div class="logInDiv">
+      <ng-template #login>
+        <mat-toolbar>
+          <p>You are not logged in</p>
+          <button class="button" (click)="auth.googleSignIn()">Login with Google</button>
+        </mat-toolbar>
+      </ng-template>
+  </div>
 
   <app-header></app-header>
   <router-outlet></router-outlet>

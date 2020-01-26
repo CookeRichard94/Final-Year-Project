@@ -9,7 +9,15 @@ import {RouteModule} from './route/route.module';
 import {RouterModule} from '@angular/router';
 import { CoreModule } from './core/core.module';
 import { ProductComponent } from './product/product.component';
-import {MatButtonModule, MatButtonToggleModule, MatGridListModule, MatIconModule, MatListModule, MatMenuModule} from '@angular/material';
+import {
+  MatButtonModule,
+  MatButtonToggleModule, MatExpansionModule,
+  MatGridListModule,
+  MatIconModule,
+  MatListModule,
+  MatMenuModule,
+  MatTableModule, MatToolbarModule
+} from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { StoreInfoService } from './store-info.service';
 import { AngularFireModule } from '@angular/fire';
@@ -52,6 +60,9 @@ const firebaseConfig = {
     AngularFireAuthModule, // auth
     AngularFireStorageModule,
     MatButtonToggleModule,
+    MatTableModule,
+    MatExpansionModule,
+    MatToolbarModule,
     // storage
   ],
   providers: [StoreInfoService],

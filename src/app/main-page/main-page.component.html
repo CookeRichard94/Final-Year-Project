@@ -5,19 +5,36 @@
     </div>
   </mat-grid-tile>
 </mat-grid-list>
-<div class="create-page">
+
+<div class="search">
+  <div class="input-group">
+    <input type="text" class="form-control" [(ngModel)]="searchValue" [ngModelOptions]="{standalone: true}" placeholder="Search by name..." (keyup)="searchByName()">
+    <div class="input-group-append">
+<!--      <span class="input-group-text"><ion-icon class="icon" name="search"></ion-icon></span>-->
+    </div>
+  </div>
+</div>
+
+
+<div class="viewDiv">
+  <div *ngFor="let name of names" class="list-group-item">
+    <div class="col col-md-8 text-col">
+      <h3 class="mb-1">{{name.payload.doc.data().name}}</h3>
+  <!--    <small>Price: {{item.payload.doc.data().price}}</small>-->
+    </div>
+  </div>
+</div>
+
+
+<div class="addDiv">
   <nav aria-label="breadcrumb">
-    <ol class="breadcrumb">
       <li class="breadcrumb-item active" aria-current="page">Create User</li>
-    </ol>
   </nav>
 
   <form class="create-form" [formGroup]="exampleForm" novalidate (ngSubmit)="onSubmit(exampleForm.value)">
 
     <div class="form-group">
-<!--      <mat-form-field class="input-style">-->
         <input matInput placeholder="Name" class="form-control" formControlName="name">
-<!--      </mat-form-field>-->
       <ng-container *ngFor="let validation of validation_messages.name">
         <mat-error *ngIf="exampleForm.get('name').hasError(validation.type) && (exampleForm.get('name').dirty || exampleForm.get('name').touched)">{{validation.message}}</mat-error>
       </ng-container>

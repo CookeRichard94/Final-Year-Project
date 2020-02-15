@@ -16,6 +16,8 @@ export class MainPageComponent implements OnInit {
   index: number;
   productInfo: any;
   names: Array<any>;
+  searchValue: string = "";
+  name_filtered_items: Array<any>;
 
   validation_messages = {
     'name': [
@@ -33,6 +35,7 @@ export class MainPageComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.getData();
     this.createForm();
     this.route.params.subscribe(params =>{
       this.index = params.id;
@@ -47,6 +50,18 @@ export class MainPageComponent implements OnInit {
     this.firebaseService.getProducts()
       .subscribe(result => {
         this.names = result;
+      })
+  }
+
+  viewDetails(name){
+    this.router.navigate(['/details/'+ name.payload.doc.id]);
+  }
+
+  searchByName(){
+    let value = this.searchValue.toLowerCase();
+    this.firebaseService.searchProducts(value)
+      .subscribe(result => {
+        this.name_filtered_items = result;
       })
   }
 

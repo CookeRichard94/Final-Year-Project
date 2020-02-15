@@ -24,7 +24,7 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 // 2. Add your credentials from step 1
 const firebaseConfig = {
   apiKey: "AIzaSyA7vkC_fWFz57LcVddQNNYocml3qvkDsmM",
@@ -66,6 +66,7 @@ const firebaseConfig = {
     MatToolbarModule,
     ReactiveFormsModule,
     MatFormFieldModule,
+    FormsModule,
     // storage
   ],
   providers: [StoreInfoService],

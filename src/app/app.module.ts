@@ -11,7 +11,7 @@ import { CoreModule } from './core/core.module';
 import { ProductComponent } from './product/product.component';
 import {
   MatButtonModule,
-  MatButtonToggleModule, MatExpansionModule,
+  MatButtonToggleModule, MatExpansionModule, MatFormFieldModule,
   MatGridListModule,
   MatIconModule,
   MatListModule,
@@ -24,6 +24,7 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import {ReactiveFormsModule} from '@angular/forms';
 // 2. Add your credentials from step 1
 const firebaseConfig = {
   apiKey: "AIzaSyA7vkC_fWFz57LcVddQNNYocml3qvkDsmM",
@@ -63,6 +64,8 @@ const firebaseConfig = {
     MatTableModule,
     MatExpansionModule,
     MatToolbarModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
     // storage
   ],
   providers: [StoreInfoService],

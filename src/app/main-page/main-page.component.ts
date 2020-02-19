@@ -50,11 +50,14 @@ export class MainPageComponent implements OnInit {
     this.firebaseService.getProducts()
       .subscribe(result => {
         this.names = result;
+        this.name_filtered_items = result;
       })
   }
 
   viewDetails(name){
-    this.router.navigate(['/details/'+ name.payload.doc.id]);
+    this.router.navigate(['/edit-product/'
+    //+ name.payload.doc.name
+    ]);
   }
 
   searchByName(){

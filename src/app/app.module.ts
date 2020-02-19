@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -25,6 +25,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { EditProductComponent } from './edit-product/edit-product.component';
 // 2. Add your credentials from step 1
 const firebaseConfig = {
   apiKey: "AIzaSyA7vkC_fWFz57LcVddQNNYocml3qvkDsmM",
@@ -43,7 +44,8 @@ const firebaseConfig = {
     HeaderComponent,
     FooterComponent,
     MainPageComponent,
-    ProductComponent
+    ProductComponent,
+    EditProductComponent
   ],
   imports: [
     BrowserModule,
@@ -70,6 +72,9 @@ const firebaseConfig = {
     // storage
   ],
   providers: [StoreInfoService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA
+  ]
 })
 export class AppModule { }

@@ -6,23 +6,37 @@
   </mat-grid-tile>
 </mat-grid-list>
 
-<div class="search">
-  <div class="input-group">
-    <input type="text" class="form-control" [(ngModel)]="searchValue" [ngModelOptions]="{standalone: true}" placeholder="Search by name..." (keyup)="searchByName()">
-    <div class="input-group-append">
+<!--<div class="search">-->
+<!--  <div class="input-group">-->
+<!--    <input type="text" class="form-control" [(ngModel)]="searchValue" [ngModelOptions]="{standalone: true}" placeholder="Search by name..." (keyup)="searchByName()">-->
+<!--    <div class="input-group-append">-->
 <!--      <span class="input-group-text"><ion-icon class="icon" name="search"></ion-icon></span>-->
-    </div>
-  </div>
-</div>
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
 
 
 <div class="viewDiv">
-  <div *ngFor="let name of names" class="list-group-item">
-    <div class="col col-md-8 text-col">
-      <h3 class="mb-1">{{name.payload.doc.data().name}}</h3>
-  <!--    <small>Price: {{item.payload.doc.data().price}}</small>-->
+  <div>
+
+    <mat-toolbar color="primary">Products</mat-toolbar>
+<!--      <mat-accordion>-->
+<!--        <mat-expansion-panel [expanded]="true" -->
+    <div *ngFor="let name of names" class="list-group-item">
+        <div class="col col-md-8 text-col">
+          <h3 class="mb-1">{{name.payload.doc.data().name}}</h3>
+      <!--    <small>Price: {{item.payload.doc.data().price}}</small>-->
+        </div>
+<!--        <div class="col col-md-2 actions-col">-->
+<!--          <button mat-raised-button [routerLink]="['/edit-product',viewDetails(name)]" type="button">-->
+<!--    &lt;!&ndash;        <ion-icon class="icon" name="arrow-round-forward"></ion-icon>&ndash;&gt;Edit-->
+<!--          </button>-->
+<!--        </div>-->
+<!--        </mat-expansion-panel>-->
+<!--      </mat-accordion>-->
     </div>
-  </div>
+    </div>
+  <p class="info-text mat-body-1" *ngIf="names.length <= 0">No posts added yet!</p>
 </div>
 
 

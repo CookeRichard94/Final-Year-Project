@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>List</title>
+</head>
+<body>
+    <div>
+        <h1>Product List</h1>
+        <a href="{% url 'product_new' %}">Add product</a><br><br>
+        <table border="1">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Size</th>
+            </tr>
+            {% for product in object_list %}
+            <tr>
+                <td>{{ product.id }}</td>
+                <td>{{ product.name }}</td>
+                <td>{{ product.price }}</td>
+                <td>{{ product.size }}</td>
+                <td>
+                    <a href="{% url 'product_detail' product.id %}">Detail</a>
+                    <a href="{% url 'product_edit' product.id %}">Edit</a>
+                    <a href="{% url 'product_delete' product.id %}">Delete</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr><td colspan="3"><b>Data is empty! Please, add data first.</b></td></tr>
+            {% endfor %}
+        </table>
+    </div>
+    <div>
+        <h1>Product List</h1>
+        <a href="{% url 'product_new' %}">My products</a><br><br>
+        <table border="1">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Size</th>
+            </tr>
+            {% for product in my_object_list %}
+{#            <tr>#}
+{#                <td>{{ product.id }}</td>#}
+{#                <td>{{ product.name }}</td>#}
+{#                <td>{{ product.price }}</td>#}
+{#                <td>{{ product.size }}</td>#}
+{#                <td>#}
+{#                    <a href="{% url 'product_detail' product.id %}">Detail</a>#}
+{#                    <a href="{% url 'product_edit' product.id %}">Edit</a>#}
+{#                    <a href="{% url 'product_delete' product.id %}">Delete</a>#}
+{#                </td>#}
+{#            </tr>#}
+            {% empty %}
+            <tr><td colspan="3"><b>Data is empty! Please, add data first.</b></td></tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+</html>

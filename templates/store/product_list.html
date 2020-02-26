@@ -33,7 +33,7 @@
         </table>
     </div>
     <div>
-        <h1>Product List</h1>
+        <h1>My products</h1>
         <a href="{% url 'product_new' %}">My products</a><br><br>
         <table border="1">
             <tr>
@@ -43,17 +43,17 @@
                 <th>Size</th>
             </tr>
             {% for product in my_object_list %}
-{#            <tr>#}
-{#                <td>{{ product.id }}</td>#}
-{#                <td>{{ product.name }}</td>#}
-{#                <td>{{ product.price }}</td>#}
-{#                <td>{{ product.size }}</td>#}
-{#                <td>#}
-{#                    <a href="{% url 'product_detail' product.id %}">Detail</a>#}
-{#                    <a href="{% url 'product_edit' product.id %}">Edit</a>#}
-{#                    <a href="{% url 'product_delete' product.id %}">Delete</a>#}
-{#                </td>#}
-{#            </tr>#}
+            <tr>
+                <td>{{ product.id }}</td>
+                <td>{{ product.name }}</td>
+                <td>{{ product.price }}</td>
+                <td>{{ product.size }}</td>
+                <td>
+                    <a href="{% url 'product_detail' product.id %}">Detail</a>
+                    <a href="{% url 'product_edit' product.id %}">Edit</a>
+                    <a href="{% url 'product_delete' product.id %}">Delete</a>
+                </td>
+            </tr>
             {% empty %}
             <tr><td colspan="4"><b>Data is empty! Please, add data first.</b></td></tr>
             {% endfor %}

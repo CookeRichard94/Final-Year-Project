@@ -25,4 +25,11 @@ urlpatterns = [
     path('new', views.ProductCreate.as_view(), name='product_new'),
     path('delete/<int:pk>', views.ProductDelete.as_view(), name='product_delete'),
     path('view/<int:pk>', views.ProductDetail.as_view(), name='product_detail'),
+
+    # path to djoser end points
+    path('auth/', include('djoser.urls')),
+    path('auth/', include('djoser.urls.jwt')),
+
+    # path to our account's app endpoints
+    path("api/accounts/", include("accounts.urls"))
 ]

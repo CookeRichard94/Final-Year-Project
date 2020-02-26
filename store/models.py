@@ -32,3 +32,14 @@ class userProfile(models.Model):
 
     def __str__(self):
         return self.user.username
+
+class Brand(models.Model):
+    """Model representing a book genre (e.g. Science Fiction, Non Fiction)."""
+    name = models.CharField(
+        max_length=30,
+        help_text="Enter a clothing brand (e.g. Calvin Klein, Tommy Hilfiger etc.)"
+        )
+
+    def __str__(self):
+        """String for representing the Model object (in Admin site etc.)"""
+        return self.name

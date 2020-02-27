@@ -20,8 +20,8 @@ from store.views import index
 
 urlpatterns = [
     path('login', views.login, name='login'),
+    path('register', views.register, name='register'),
     path('', index, name='product_list'),
-
 
     path('admin/', admin.site.urls),
     path('store/', include('store.urls')),

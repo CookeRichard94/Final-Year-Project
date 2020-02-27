@@ -1,6 +1,7 @@
 from unittest import loader
 
 from django.contrib.auth import authenticate
+from django.contrib.auth.models import User
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404, redirect
 
@@ -39,6 +40,8 @@ def index(request, context=None):
     if context is None:
         context = {}
 
+    context['products'] = Product.objects.all()
+
     return render(request, 'store/product_list.html', context=context)
 
 def login(request):
@@ -56,3 +59,18 @@ def login(request):
 
     elif request.method == 'GET':
         return render(request, 'registration/login.html', {})
+
+def register(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+
+        #User.objects.create_user
+        user = User.objects.create_user(username=username, password=password)
+
+        user.last_name = 'Lennon'
+        user.save()
+
+        print(user)
+    elif request.method == 'GET':
+        return render(request, 'registration/register.html', {})

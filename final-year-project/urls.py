@@ -16,45 +16,17 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from store import views
+from store.views import index
 
 urlpatterns = [
+    path('login', views.login, name='login'),
+    path('', index, name='product_list'),
+
+
     path('admin/', admin.site.urls),
     path('store/', include('store.urls')),
-    path('', views.ProductList.as_view(), name='product_list'),
     path('edit/<int:pk>', views.ProductUpdate.as_view(), name='product_edit'),
     path('new', views.ProductCreate.as_view(), name='product_new'),
     path('delete/<int:pk>', views.ProductDelete.as_view(), name='product_delete'),
     path('view/<int:pk>', views.ProductDetail.as_view(), name='product_detail'),
-  ]
-#
-# from django.urls import path
-# from django.contrib import admin
-#
-# # Use include() to add URLS from the catalog application and authentication system
-# from django.urls import include
-#
-#
-# urlpatterns = [
-#     path('admin/', admin.site.urls),
-# ]
-#
-#
-# # urlpatterns += [
-# #     path('catalog/', include('catalog.urls')),
-# # ]
-#
-# # Use static() to add url mapping to serve static files during development (only)
-# # from django.conf import settings
-# # from django.conf.urls.static import static
-# #
-# #
-# # urlpatterns+= static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-# #
-# # #Add URL maps to redirect the base URL to our application
-# # from django.views.generic import RedirectView
-# # urlpatterns += [
-# #     path('', RedirectView.as_view(url='/catalog/', permanent=True)),
-# # ]
-#
-# urlpatterns +=[
-#     path('accounts/', include('django.contrib.auth.urls')),
+]

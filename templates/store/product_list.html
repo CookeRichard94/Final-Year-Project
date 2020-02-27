@@ -5,6 +5,9 @@
     <title>List</title>
 </head>
 <body>
+    {% if user is not none and user.username != '' %}
+        <h1> Hello {{ user.username }}</h1>
+    {% endif %}
     <div>
         <h1>Product List</h1>
         <a href="{% url 'product_new' %}">Add product</a><br><br>

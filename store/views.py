@@ -67,9 +67,15 @@ def register(request):
 
         #User.objects.create_user
         user = User.objects.create_user(username=username, password=password)
-
-        user.last_name = 'Lennon'
         user.save()
+
+        user = authenticate(request, username=username, password=password)
+
+        if user is not None:
+            return index(request, {'user': user})
+
+        else:
+            return redirect('login')
 
         print(user)
     elif request.method == 'GET':

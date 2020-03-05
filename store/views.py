@@ -36,13 +36,12 @@ class ProductDelete(DeleteView):
     success_url = reverse_lazy('product_list')
 
 
-def index(request, context=None):
-    if context is None:
-        context = {}
+def index(request):
+    context = {'products': Product.objects.all()}
+    if 'username' in request.session:
+        context['username'] = request.session['username']
 
-    context['products'] = Product.objects.all()
-
-    return render(request, 'store/product_list.html', context=context)
+    return render(request, 'store/product_list.html', context)
 
 def login(request):
     if request.method == 'POST':
@@ -52,13 +51,14 @@ def login(request):
         user = authenticate(request, username=username, password=password)
 
         if user is not None:
-            return index(request, {'user': user})
+            request.session['username'] = username
+            return redirect('product_list')
 
         else:
             return redirect('login')
 
     elif request.method == 'GET':
-        return render(request, 'registration/login.html', {})
+        return render(request, 'registration/login.html')
 
 def register(request):
     if request.method == 'POST':
@@ -72,18 +72,20 @@ def register(request):
         user = authenticate(request, username=username, password=password)
 
         if user is not None:
-            return index(request, {'user': user})
+            request.session['username'] = username
+            return redirect('product_list')
 
         else:
             return redirect('login')
 
-        print(user)
     elif request.method == 'GET':
         return render(request, 'registration/register.html', {})
 
-def logout(request):
+def logout(request, context=None):
     if request.method == 'POST':
-        logout(request)
+        request.session.clear()
+        return redirect('product_list')
+
 
     elif request.method == 'GET':
         return render(request, 'store/product_list.html', {})

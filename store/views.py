@@ -1,6 +1,6 @@
 from unittest import loader
 
-from django.contrib.auth import authenticate
+from django.contrib.auth import authenticate, logout
 from django.contrib.auth.models import User
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404, redirect
@@ -80,3 +80,10 @@ def register(request):
         print(user)
     elif request.method == 'GET':
         return render(request, 'registration/register.html', {})
+
+def logout(request):
+    if request.method == 'POST':
+        logout(request)
+
+    elif request.method == 'GET':
+        return render(request, 'store/product_list.html', {})

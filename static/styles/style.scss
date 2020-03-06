@@ -1,0 +1,153 @@
+body {
+    overflow-x: hidden;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    min-height: 8vh;
+    background-color: #2F4F4F;
+    font-family: 'Comfortaa', serif;
+  }
+
+  .logo {
+    color: aliceblue;
+    font-size: 60px;
+    margin-top: 5px;
+    letter-spacing: 5px;
+  }
+
+  .nav-links {
+    display: flex;
+    justify-content: space-around;
+    width: 35%;
+    margin-top: 20px;
+  }
+
+  .nav-links li{
+    list-style: none;
+  }
+
+  .nav-links a{
+    color: aliceblue;
+    text-decoration: none;
+    letter-spacing: 3px;
+    font-weight: bold;
+  }
+
+  .side-links li{
+    list-style: none;
+    opacity: 0;
+    height: 35%;
+    margin-top: 20px;
+  }
+
+  .side-links a{
+    text-decoration: none;
+    color: aliceblue;
+    letter-spacing: 3px;
+    font-weight: bold;
+
+  }
+
+  .side-links {
+    color: aliceblue;
+    text-decoration: none;
+    letter-spacing: 3px;
+    font-weight: bold;
+    position: absolute;
+    right: 0;
+    height: 92vh;
+    top: 8vh;
+    background-color: #2F4F4F;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 30%;
+    transform: translateX(100%);
+    transition: transform 0.5s ease-in;
+  }
+
+  .burger {
+    cursor: pointer;
+  }
+
+  .burger div{
+    width: 40px;
+    height: 8px;
+    background-color: aliceblue;
+    margin: 4.8px;
+    transition: all 0.3s ease;
+  }
+
+  .nav-active{
+    transform: translateX(0%);
+  }
+
+  @keyframes sideLinkFade {
+    from{
+      opacity: 0;
+      transform: translateX(50px);
+    }
+    to{
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  .toggle .line1{
+    transform: rotate(-45deg) translate(-5px, 13px);
+  }
+
+  .toggle .line2{
+    opacity: 0;
+  }
+
+  .toggle .line3{
+    transform: rotate(45deg) translate(-5px, -13px);
+  }
+
+  img {
+      color: aliceblue;
+  }
+
+  .foot{
+      color: aliceblue;
+
+  }
+
+  .foot-links{
+      text-decoration: none;
+  }
+
+  .social {
+    background-color: #b6c1c1;
+    text-align: center;
+  }
+
+  .social li{
+    list-style: none;
+    float: left;
+    padding: 22px;
+  }
+
+  .bottom {
+    background-color: #597272;
+    }
+
+  .bottom li{
+      list-style: none;
+      text-decoration: none;
+  }
+
+  header {
+      position: fixed; /* Set the navbar to fixed position */
+      width: 100%;
+  }

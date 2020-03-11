@@ -26,8 +26,11 @@
                 <td>{{ product.size }}</td>
                 <td>
                     <a href="{% url 'product_detail' product.id %}">Detail</a>
-                    <a href="{% url 'product_edit' product.id %}">Edit</a>
-                    <a href="{% url 'product_delete' product.id %}">Delete</a>
+                    {% if username is not none and username != '' %}
+                        <a href="{% url 'product_edit' product.id %}">Edit</a>
+                        <a href="{% url 'product_delete' product.id %}">Delete</a>
+                        <a href="">Add to cart</a>
+                    {% endif %}
                 </td>
             </tr>
             {% empty %}

@@ -1,6 +1,9 @@
 body {
   overflow-x: hidden; }
 
+html {
+  scroll-behavior: smooth; }
+
 * {
   margin: 0;
   padding: 0;
@@ -112,15 +115,13 @@ img {
   padding: 22px; }
 
 .bottom {
-  background-color: #597272; }
+  background-color: #597272;
+  font-size: 18px; }
 
 .bottom li {
   list-style: none;
-  text-decoration: none; }
-
-header {
-  position: fixed;
-  /* Set the navbar to fixed position */
-  width: 100%; }
+  text-decoration: none;
+  float: left;
+  width: 100px; }
 
 /*# sourceMappingURL=style.css.map */

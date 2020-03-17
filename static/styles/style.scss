@@ -2,6 +2,10 @@ body {
     overflow-x: hidden;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   * {
     margin: 0;
     padding: 0;
@@ -115,16 +119,15 @@ body {
   }
 
   img {
-      color: aliceblue;
+    color: aliceblue;
   }
 
   .foot{
-      color: aliceblue;
-
+    color: aliceblue;
   }
 
   .foot-links{
-      text-decoration: none;
+    text-decoration: none;
   }
 
   .social {
@@ -140,14 +143,12 @@ body {
 
   .bottom {
     background-color: #597272;
-    }
-
-  .bottom li{
-      list-style: none;
-      text-decoration: none;
+    font-size: 18px;
   }
 
-  header {
-      position: fixed; /* Set the navbar to fixed position */
-      width: 100%;
+  .bottom li{
+    list-style: none;
+    text-decoration: none;
+    float: left;
+    width: 100px;
   }

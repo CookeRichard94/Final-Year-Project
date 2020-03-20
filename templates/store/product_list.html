@@ -2,15 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>List</title>
+    <title>Home</title>
 </head>
 <body>
-    {% if username is not none and username != '' %}
-        <h1> Hello {{ username }}</h1>
+    {% if user.username is not none and user.username != '' %}
+        <h1> Hello {{ user.username }}</h1>
+    {% elif user.username is none %}
+        <h5>You are not logged in</h5>
     {% endif %}
     <div>
-        <h1>Product List</h1>
-        <a href="{% url 'product_new' %}">Add product</a><br><br>
+        <h1>Products</h1>
+        {% if user.is_superuser %}
+            <a href="{% url 'product_new' %}">Add product</a><br><br>
+        {% endif %}
         <table border="1">
             <tr>
 {#                <th>ID</th>#}
@@ -26,9 +30,11 @@
                 <td>{{ product.size }}</td>
                 <td>
                     <a href="{% url 'product_detail' product.id %}">Detail</a>
-                    {% if username is not none and username != '' %}
+                    {% if user.is_superuser %}
                         <a href="{% url 'product_edit' product.id %}">Edit</a>
                         <a href="{% url 'product_delete' product.id %}">Delete</a>
+                    {% endif %}
+                    {% if user.username is not none and user.username != '' %}
                         <a href="">Add to cart</a>
                     {% endif %}
                 </td>
@@ -39,10 +45,15 @@
         </table>
     </div>
     <div>
-        <a href="{% url 'login' %}">Login</a>
-        <a href="{% url 'register' %}">Register</a>
-        <a href="#" onclick="document.getElementById('logout').submit()">Logout</a>
-        <form id="logout" action="{% url 'logout' %}" method="post">{% csrf_token %}</form>
+        <br><br>
+        {% if user.username is none or user.username == '' %}
+            <a href="{% url 'login' %}">Login</a>
+            <a href="{% url 'register' %}">Register</a>
+        {% endif %}
+        {% if user.username is not none and user.username != '' %}
+            <a href="#" onclick="document.getElementById('logout').submit()">Logout</a>
+            <form id="logout" action="{% url 'logout' %}" method="post">{% csrf_token %}</form>
+        {% endif %}
     </div>
 {#    <div>#}
 {#        <h1>Users</h1>#}
@@ -56,7 +67,7 @@
 {#            <tr>#}
 {#                {% for user in users %}#}
 {#                <td>{{ user.id }}</td>#}
-{#                <td>{{ user.username }}</td>#}
+{#                <td>{{ user.user.username }}</td>#}
 {#            </tr>#}
 {#            {% empty %}#}
 {#            <tr><td colspan="4"><b>Data is empty! Please, add data first.</b></td></tr>#}

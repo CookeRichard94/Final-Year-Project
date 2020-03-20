@@ -2,12 +2,31 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Details</title>
 </head>
 <body>
-    <h1>Product Detail</h1>
-    <h3>Name : {{ object.name }}</h3>
-    <h3>Price : {{ object.Price }}</h3>
-    <h3>Size : {{  object.size }}</h3>
+    <table>
+        <tr>
+            <td><h2>Name</h2></td>
+            <td>:</td>
+            <td><h2>{{ object.name }}</h2></td>
+        </tr>
+        <tr>
+            <td><h2>Price</h2></td>
+            <td>:</td>
+            <td><h2>{{ object.price }}</h2></td>
+        </tr>
+        <tr>
+            <td><h2>Size</h2></td>
+            <td>:</td>
+            <td><h2>{{ object.size }}</h2></td>
+        </tr>
+        <tr>
+            <td><h2>Amount in stock</h2></td>
+            <td>:</td>
+            <td><h2>{{ object.quantity }}</h2></td>
+        </tr>
+
+    </table>
 </body>
 </html>

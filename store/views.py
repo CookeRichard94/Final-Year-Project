@@ -7,7 +7,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 
 from django.urls import reverse_lazy, reverse
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
-
+from django.core import serializers
 from store.models import Product
 from store.forms import ProductForm
 
@@ -22,13 +22,13 @@ class ProductDetail(DetailView):
 class ProductUpdate(UpdateView):
     model = Product
     # Field must be same as the model attribute
-    fields = ['name', 'price', 'size']
+    fields = ['name', 'price', 'size', 'quantity']
     success_url = reverse_lazy('product_list')
 
 class ProductCreate(CreateView):
     model = Product
     # Field must be same as the model attribute
-    fields = ['name', 'price', 'size']
+    fields = ['name', 'price', 'size', 'quantity']
     success_url = reverse_lazy('product_list')
 
 class ProductDelete(DeleteView):
@@ -39,7 +39,7 @@ class ProductDelete(DeleteView):
 def index(request):
     context = {'products': Product.objects.all()}
     if 'username' in request.session:
-        context['username'] = request.session['username']
+        context['user'] = User.objects.get_by_natural_key(request.session['username'])
 
     return render(request, 'store/product_list.html', context)
 

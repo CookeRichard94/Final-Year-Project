@@ -35,3 +35,6 @@ class userProfile(models.Model):
 
     def __str__(self):
         return self.user.username
+
+class Cart(models.Model):
+    items=models.TextField(blank=True,null=True)

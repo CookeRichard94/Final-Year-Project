@@ -5,6 +5,9 @@
     <title>Home</title>
 </head>
 <body>
+
+    <h1>{{ request.session.cart }}</h1>
+
     {% if user.username is not none and user.username != '' %}
         <h1> Hello {{ user.username }}</h1>
     {% elif user.username is none %}
@@ -22,6 +25,7 @@
                 <th>Price</th>
                 <th>Size</th>
             </tr>
+            <iframe name="foo" style="display: none;"></iframe>
             {% for product in products %}
             <tr>
 {#                <td>{{ product.id }}</td>#}
@@ -35,7 +39,11 @@
                         <a href="{% url 'product_delete' product.id %}">Delete</a>
                     {% endif %}
                     {% if user.username is not none and user.username != '' %}
-                        <a href="">Add to cart</a>
+                        <form method="post" action="{% url 'cart' %}" target="foo">
+                            {% csrf_token %}
+                            <input type="hidden" name="product_id" id="product_id" value="{{ product.pk }}">
+                            <input type="submit" value="Add to cart">
+                        </form>
                     {% endif %}
                 </td>
             </tr>

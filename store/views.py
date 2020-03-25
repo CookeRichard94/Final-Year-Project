@@ -60,6 +60,22 @@ def login(request):
     elif request.method == 'GET':
         return render(request, 'registration/login.html')
 
+def cart(request):
+    if request.method== 'POST':
+        product_id=request.POST.get("product_id", None)
+        if product_id is not None:
+            product = Product.objects.get(pk=product_id)
+            if product is not None:
+                cart = str(request.session.get("cart", "")).split(",")
+                cart.append(product_id)
+                request.session["cart"] = ",".join([i for i in cart if i != ""])
+                return HttpResponse(status=200)
+            else:
+                return HttpResponse(status=404)
+        else:
+            return HttpResponse(status=400)
+
+
 def register(request):
     if request.method == 'POST':
         username = request.POST['username']

@@ -4,25 +4,22 @@
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
-<body>
+    <body>
+        <div id="id02" class="modal">
+             <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
+             <form class="modal-content" method="post">
+             {% csrf_token %}
+                <div class="container">
+                    <label for="uname"><b>Username</b></label>
+                    <input type="text" placeholder="Enter Username" name="username" required>
 
- <form method="post">
- {% csrf_token %}
-  <div class="imgcontainer">
-    <img src="img_avatar2.png" alt="Avatar" class="avatar">
-  </div>
+                    <label for="psw"><b>Password</b></label>
+                    <input type="password" placeholder="Enter Password" name="password" required>
 
-  <div class="container">
-    <label for="uname"><b>Username</b></label>
-    <input type="text" placeholder="Enter Username" name="username" required>
-
-    <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="password" required>
-
-    <button type="submit">Login</button>
-  </div>
-
-
-</form>
-</body>
+                    <button type="submit">Login</button>
+                    <button class="cancel" onclick="document.getElementById('id02').style.display='none'">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </body>
 </html>

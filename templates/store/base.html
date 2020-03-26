@@ -19,9 +19,10 @@
             <li class="dropdown">
                 <span><img src="../../images/user.png" alt="user" width="50px" height="45px"></span>
                 <div class="dropdown-content">
-                    <a href="../registration/login.html"><p>Login</p></a>
+                    <button class="account-register" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Register/Sign-Up</button>
                     <br>
-                    <a href="../registration/register.html"><p>Register</p></a>
+                    <br>
+                    <button class="account-login" onclick="document.getElementById('id02').style.display='block'" style="width:auto;">Sign-In</button>
                 </div>
             </li>
             <li>
@@ -120,6 +121,54 @@
         </div>
     </nav>
 </footer>
+
+<!-- Register -->
+<!-- Register pop up page -->
+<div id="id01" class="modal">
+    <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+    <form class="modal-content" method="post">
+        {% csrf_token %}
+        <div class="container">
+            <h2>Register/Sign Up</h2>
+            <p>Please fill in the following details to create an account.</p>
+            <hr>
+            <label for="uname"><b>Username</b></label>
+            <input type="text" placeholder="Enter Username" name="username" required>
+
+            <label for="psw"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="password" required>
+
+            <div class="clearfix">
+                <button class="create" type="submit">Create Account</button>
+                <button class="cancel" onclick="document.getElementById('id01').style.display='none'">Cancel</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<!-- Sign-in -->
+<div id="id02" class="modal">
+    <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
+    <form class="modal-content" method="post">
+        {% csrf_token %}
+        <div class="container">
+
+            <h2>Sign In</h2>
+            <hr>
+            <label for="uname"><b>Username</b></label>
+            <input type="text" placeholder="Enter Username" name="username" required>
+
+            <label for="psw"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="password" required>
+
+            <div class="clearfix">
+                <button class="login" type="submit">Login</button>
+                <button class="cancel" onclick="document.getElementById('id02').style.display='none'">Cancel</button>
+            </div>
+        </div>
+    </form>
+</div>
+
 <script src="../../static/javascript/navbar.js"></script>
 
 </body>

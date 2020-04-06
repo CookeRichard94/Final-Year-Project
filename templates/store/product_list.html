@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <meta charset="UTF-8">
     <title>Home</title>
 </head>
 <body>
 
-    <h1>{{ request.session.cart }}</h1>
+    <h1>cart</h1>
+    <ul id="cart"></ul>
 
     {% if user.username is not none and user.username != '' %}
         <h1> Hello {{ user.username }}</h1>
@@ -32,20 +34,18 @@
                 <td>{{ product.name }}</td>
                 <td>{{ product.price }}</td>
                 <td>{{ product.size }}</td>
-                <td>
-                    <a href="{% url 'product_detail' product.id %}">Detail</a>
-                    {% if user.is_superuser %}
-                        <a href="{% url 'product_edit' product.id %}">Edit</a>
-                        <a href="{% url 'product_delete' product.id %}">Delete</a>
-                    {% endif %}
-                    {% if user.username is not none and user.username != '' %}
-                        <form method="post" action="{% url 'cart' %}" target="foo">
-                            {% csrf_token %}
-                            <input type="hidden" name="product_id" id="product_id" value="{{ product.pk }}">
-                            <input type="submit" value="Add to cart">
-                        </form>
-                    {% endif %}
-                </td>
+                <td>{{ product.quantity }}</td>
+                <td>{{ product.img }}</td>
+                <td><a href="{% url 'product_detail' product.id %}">Detail</a></td>
+                {% if user.is_superuser %}
+                    <td><a href="{% url 'product_edit' product.id %}">Edit</a></td>
+                    <td><a href="{% url 'product_delete' product.id %}">Delete</a></td>
+                {% endif %}
+                {% if user.username is not none and user.username != '' %}
+                    <td>
+                    <button onclick="addToCart({{ product.pk }})">Add to cart</button>
+                    </td>
+                {% endif %}
             </tr>
             {% empty %}
             <tr><td colspan="4"><b>Data is empty! Please, add data first.</b></td></tr>
@@ -109,5 +109,37 @@
 {#            {% endfor %}#}
 {#        </table>#}
 {#    </div>#}
+<script>
+    function addToCart(item) {
+        $.ajax({
+            url: '{% url "cart" %}',
+            type: 'POST',
+            data: {
+                'csrfmiddlewaretoken': '{{ csrf_token }}',
+                'product_id': item
+            },
+            success: function (msg) {
+                updateCart();
+            }
+        });
+    }
+    function updateCart() {
+        $.ajax({
+            url: '{% url "cart" %}',
+            type: 'GET',
+            success: function (data) {
+                {#console.log(data);#}
+                listElement = document.getElementById("cart");
+                listElement.innerHTML = ""
+                data.forEach(function (product) {
+                    var li = document.createElement("li");
+                    li.innerText = product.fields.name;
+                    listElement.appendChild(li);
+                })
+            }
+        });
+    }
+    updateCart();
+</script>
 </body>
 </html>

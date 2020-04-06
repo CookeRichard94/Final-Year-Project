@@ -1,15 +1,15 @@
-from unittest import loader
+import json
 
-from django.contrib.auth import authenticate, logout
+from django.contrib.auth import authenticate
 from django.contrib.auth.models import User
-from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import render, get_object_or_404, redirect
-
-from django.urls import reverse_lazy, reverse
-from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.core import serializers
+from django.http import HttpResponse
+from django.shortcuts import render, redirect
+from django.urls import reverse_lazy
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+
 from store.models import Product
-from store.forms import ProductForm
+
 
 # Create your views here.
 
@@ -63,7 +63,7 @@ def login(request):
 def cart(request):
     if request.method== 'POST':
         product_id=request.POST.get("product_id", None)
-        if product_id is not None:
+        if product_id is not None and product_id.isnumeric():
             product = Product.objects.get(pk=product_id)
             if product is not None:
                 cart = str(request.session.get("cart", "")).split(",")
@@ -74,6 +74,21 @@ def cart(request):
                 return HttpResponse(status=404)
         else:
             return HttpResponse(status=400)
+    elif request.method=='GET':
+        context = {}
+        if 'username' in request.session:
+            context['user'] = User.objects.get_by_natural_key(request.session['username'])
+
+        cart = str(request.session.get("cart", "")).split(",")
+        context["cart"] = []
+        for product_id in cart:
+            if not product_id.isnumeric():
+                continue
+            product = Product.objects.get(pk=product_id)
+            if product is not None:
+                context["cart"].append(product)
+        products = [Product.objects.get(id=pk) for pk in cart]
+        return HttpResponse(content = serializers.serialize('json', products),content_type='application/json')
 
 
 def register(request):

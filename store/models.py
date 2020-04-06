@@ -1,3 +1,5 @@
+import base64
+
 from django.contrib.auth.models import User
 from django.db import models
 from django.urls import reverse
@@ -15,6 +17,7 @@ class Product(models.Model):
     price = models.DecimalField(max_digits=6, decimal_places=2)
     size = models.CharField(max_length=1, choices=SHIRT_SIZES)
     quantity = models.DecimalField(max_digits=3, decimal_places=0)
+    img = models.BinaryField(max_length=75)
 
     class Meta:
         db_table = "store_product"

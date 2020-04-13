@@ -1,10 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <meta charset="UTF-8">
-    <title>Details</title>
+    <title>{{ object.name }}</title>
 </head>
 <body>
+    <a href="{% url 'product_list' %}">Back</a>
+
+    <h1>cart</h1>
+    <ul id="cart"></ul>
     <table>
         <tr>
             <td><h2>Name</h2></td>
@@ -28,5 +33,43 @@
         </tr>
 
     </table>
+    <button onclick="addToCart({{ product.pk }})">Add to cart</button>
 </body>
+<script>
+    function addToCart(object) {
+        $.ajax({
+            url: '{% url "cart" %}',
+            type: 'POST',
+            data: {
+                'csrfmiddlewaretoken': '{{ csrf_token }}',
+                'product_id': object
+            },
+            success: function (msg) {
+                updateCart();
+            }
+        });
+    }
+    function updateCart() {
+        $.ajax({
+            url: '{% url "cart" %}',
+            type: 'GET',
+            success: function (data) {
+                console.log(data);
+                listElement = document.getElementById("cart");
+                listElement.innerHTML = ""
+                data.forEach(function (product) {
+                    //var total += product.fields.price(float);
+                    var totalDisplay = document.createElement("totalDisplay");
+                    totalDisplay.innerText = product.fields.price;
+                    var li = document.createElement("li");
+                    li.innerText = product.fields.name +" €"+ product.fields.price;
+                    listElement.appendChild(li);
+
+                })
+                listElement.append("Toatal cart cost: €" + data.totalDisplay);
+            }
+        });
+    }
+    updateCart();
+</script>
 </html>

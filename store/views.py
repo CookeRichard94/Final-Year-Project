@@ -62,18 +62,22 @@ def login(request):
 
 def cart(request):
     if request.method== 'POST':
-        product_id=request.POST.get("product_id", None)
-        if product_id is not None and product_id.isnumeric():
-            product = Product.objects.get(pk=product_id)
-            if product is not None:
-                cart = str(request.session.get("cart", "")).split(",")
-                cart.append(product_id)
-                request.session["cart"] = ",".join([i for i in cart if i != ""])
-                return HttpResponse(status=200)
+        action = request.POST.get("action", None)
+        if action == "add_to_cart" or action == "remove_from_cart":
+            product_id=request.POST.get("product_id", None)
+            if product_id is not None and product_id.isnumeric():
+                product = Product.objects.get(pk=product_id)
+                if product is not None:
+                    cart = str(request.session.get("cart", "")).split(",")
+                    cart.append(product_id) if action == "add_to_cart" else cart.remove(product_id)
+                    request.session["cart"] = ",".join([i for i in cart if i != ""])
+                    return HttpResponse(status=200)
+                else:
+                    return HttpResponse(status=404)
             else:
-                return HttpResponse(status=404)
+                return HttpResponse(status=400)
         else:
-            return HttpResponse(status=400)
+            return HttpResponse(content="unknown action", status=400)
     elif request.method=='GET':
         context = {}
         if 'username' in request.session:
@@ -89,6 +93,7 @@ def cart(request):
                 context["cart"].append(product)
         products = [Product.objects.get(id=pk) for pk in cart]
         return HttpResponse(content = serializers.serialize('json', products),content_type='application/json')
+
 
 
 def register(request):

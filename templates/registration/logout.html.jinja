@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Logout</title>
+</head>
+<body>
+    {% if user is not none and user.username != '' %}
+        <h1> Are you sure you want to logout, {{ user.username }}?</h1>
+    {% endif %}
+    <a href="{% url 'logout' %}">Yes</a>
+    <a href="{% url '' %}">No</a>
+</body>
+</html>

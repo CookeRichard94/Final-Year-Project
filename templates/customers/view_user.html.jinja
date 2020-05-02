@@ -1,0 +1,14 @@
+{% extends "store/extensions/base.html.jinja" %}
+{% block title %}Your details{% endblock %}
+{% block content %}
+    <a href="{% url 'list' %}">Back</a>
+
+    <table>
+        <iframe name="foo" style="display: none;"></iframe>
+        <tr>
+            <td><h2>Name</h2></td>
+            <td>:</td>
+            <td><h2>{{ request.user.username }}</h2></td>
+        </tr>
+    </table>
+{% endblock %}

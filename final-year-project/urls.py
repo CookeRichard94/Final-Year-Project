@@ -16,18 +16,18 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from store import views
-from store.views import index
+from store.views import *
 
 urlpatterns = [
-    path('login', views.login, name='login'),
+    path('login', views.login_view, name='login_view'),
     path('logout', views.logout, name='logout'),
     path('register', views.register, name='register'),
-    path('', index, name='product_list'),
+    path('', index, name='list'),
+    path('cart', cart, name='cart'),
 
     path('admin/', admin.site.urls),
     path('store/', include('store.urls')),
-    path('edit/<int:pk>', views.ProductUpdate.as_view(), name='product_edit'),
-    path('new', views.ProductCreate.as_view(), name='product_new'),
-    path('delete/<int:pk>', views.ProductDelete.as_view(), name='product_delete'),
-    path('view/<int:pk>', views.ProductDetail.as_view(), name='product_detail'),
+    path('products/<int:pk>', product_view, name="product_view"),
+    path('profile/', view_user, name="view_user"),
+    path('add_product', add_product, name='add_product'),
 ]

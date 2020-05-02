@@ -14,9 +14,9 @@ def product_view(request, pk):
     context = {"product": product}
     if request.method == "GET":
         if request.GET.get("edit") is not None:
-            return render(request, 'store/product/edit_product.html.jinja', context)
+            return render(request, 'store/product/edit_product.html.jinja2', context)
         else:
-            return render(request, 'store/product/detail.html.jinja', context)
+            return render(request, 'store/product/detail.html.jinja2', context)
 
     elif request.method == "POST":
         keys = ('name', 'size', 'price', 'quantity')
@@ -30,8 +30,8 @@ def product_view(request, pk):
                 #add validation
                 # print(e)
                 context["notifications"].append("Validation Error")
-                return render(request, 'store/product/edit_product.html.jinja',context)
-            return render(request, 'store/product/detail.html.jinja', context)
+                return render(request, 'store/product/edit_product.html.jinja2',context)
+            return render(request, 'store/product/detail.html.jinja2', context)
 
     elif request.method == "DELETE":
         if product is not None:
@@ -41,7 +41,7 @@ def product_view(request, pk):
 
 def add_product(request):
     if request.method == "GET":
-        return render(request, 'store/product/add_product.html.jinja')
+        return render(request, 'store/product/add_product.html.jinja2')
     elif request.method == "POST":
         keys = ('name', 'size', 'price', 'quantity')
         if all((key in request.POST for key in keys)):
@@ -52,7 +52,7 @@ def add_product(request):
 
 def view_user(request):
     if request.method == "GET":
-        return render(request, 'customers/view_user.html.jinja')
+        return render(request, 'customers/view_user.html.jinja2')
     elif request.method == "POST":
         keys = ('username', 'size', 'price', 'quantity')
         if all((key in request.POST for key in keys)):
@@ -65,12 +65,12 @@ def view_user(request):
                 #add validation
                 # print(e)
                 context["notifications"].append("Validation Error")
-                return render(request, 'store/product/edit_product.html.jinja',context)
-            return render(request, 'store/product/detail.html.jinja', context)
+                return render(request, 'store/product/edit_product.html.jinja2',context)
+            return render(request, 'store/product/detail.html.jinja2', context)
 
 
 def index(request):
-    return render(request, 'store/product/list.html.jinja', {'products': Product.objects.all()})
+    return render(request, 'store/product/list.html.jinja2', {'products': Product.objects.all()})
 
 
 def login_view(request):
@@ -87,7 +87,7 @@ def login_view(request):
             return redirect('login')
 
     elif request.method == 'GET':
-        return render(request, 'registration/login.html.jinja')
+        return render(request, 'registration/login.html.jinja2')
 
 
 def register(request):
@@ -109,7 +109,7 @@ def register(request):
             return redirect('login')
 
     elif request.method == 'GET':
-        return render(request, 'registration/register.html.jinja', {})
+        return render(request, 'registration/register.html.jinja2', {})
 
 
 def logout(request, context=None):
@@ -118,7 +118,7 @@ def logout(request, context=None):
         return redirect('list')
 
     elif request.method == 'GET':
-        return render(request, 'store/product/list.html.jinja', {})
+        return render(request, 'store/product/list.html.jinja2', {})
 
 
 def cart(request):

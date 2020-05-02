@@ -1,0 +1,59 @@
+{% extends "store/extensions/base.html.jinja2" %}
+{% block title %}Home{% endblock %}
+{% block content %}
+    <div>
+        <h1>Products</h1>
+        {% if request.user.is_superuser %}
+            <a href="{% url 'add_product' %}">Add product</a><br><br>
+        {% endif %}
+        <table border="4">
+            <iframe name="foo" style="display: none;"></iframe>
+            {% for product in products %}
+                <tr>
+                    <td>{{ product.name }}</td>
+                    <td>{{ product.price }}</td>
+                    <td>{{ product.size }}</td>
+                    <td>{{ product.quantity }}</td>
+                    <td>{{ product.img }}</td>
+                    <td><a href="{% url 'product_view' product.id %}">Detail</a></td>
+                    {% if request.user.is_superuser %}
+                        <td><a href="{% url 'product_view' product.id %}?edit=1">Edit</a></td>
+                        {#                    <td><a href="{% url 'product_view' product.id %}?delete=1">Delete</a></td>#}
+                        <td>
+                            <button onclick="delete_product('{{ product.name }}', '{% url "product_view" product.pk %}')">
+                                Delete
+                            </button>
+                        </td>
+                    {% endif %}
+                    {% if request.user.username is not none and request.user.username != '' %}
+                        <td>
+                            <button onclick="addToCart({{ product.pk }})">Add to cart</button>
+                        </td>
+                        <td>
+                            <button onclick="removeFromCart({{ product.pk }})">Remove from cart</button>
+                        </td>
+                    {% endif %}
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="4"><b>Data is empty! Please, add data first.</b></td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <script>
+        function delete_product(name, url) {
+            if (confirm("Are you sure you want to delete \"" + name + "\"?"))
+                $.ajax({
+                    url: url,
+                    type: 'DELETE',
+                    success: function (result) {
+                        alert("Product Deleted");
+                    },
+                    headers: {
+                        'X-CSRFToken': '{{ csrf_token }}'
+                    },
+                });
+        }
+    </script>
+{% endblock %}

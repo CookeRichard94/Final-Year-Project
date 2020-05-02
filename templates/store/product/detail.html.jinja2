@@ -1,0 +1,35 @@
+{% extends "store/extensions/base.html.jinja2" %}
+{% block title %}{{product.name}}{% endblock %}
+{% block content %}
+    <a href="{% url 'list' %}">Back</a>
+
+    <table>
+        <iframe name="foo" style="display: none;"></iframe>
+        <tr>
+            <td><h2>Name</h2></td>
+            <td>:</td>
+            <td><h2>{{ product.name }}</h2></td>
+        </tr>
+        <tr>
+            <td><h2>Price</h2></td>
+            <td>:</td>
+            <td><h2>{{ product.price }}</h2></td>
+        </tr>
+        <tr>
+            <td><h2>Size</h2></td>
+            <td>:</td>
+            <td><h2>{{ product.size }}</h2></td>
+        </tr>
+        <tr>
+            <td><h2>Amount in stock</h2></td>
+            <td>:</td>
+            <td><h2>{{ product.quantity }}</h2></td>
+        </tr>
+    </table>
+    {% if request.session.username is not none and request.session.username != '' %}
+        <tr>
+            <td><button onclick="addToCart({{ product.pk }})">Add to cart</button></td>
+            <td><button onclick="removeFromCart({{ product.pk }})">Remove from cart</button></td>
+        </tr>
+    {% endif %}
+{% endblock %}

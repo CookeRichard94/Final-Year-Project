@@ -15,8 +15,8 @@ class Product(models.Model):
     )
     name = models.CharField(max_length=200)
     price = models.DecimalField(max_digits=6, decimal_places=2)
-    size = models.CharField(max_length=1, choices=SHIRT_SIZES)
-    quantity = models.DecimalField(max_digits=3, decimal_places=0)
+    size = models.CharField(max_length=2, choices=SHIRT_SIZES)
+    quantity = models.DecimalField(max_digits=3, decimal_places=0, default=1)
     # img = models.ImageField(upload_to='images/')
 
     class Meta:

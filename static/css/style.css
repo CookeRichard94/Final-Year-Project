@@ -24,6 +24,19 @@ nav {
   margin-top: 5px;
   margin-left: 500px; }
 
+/* Links Styling */
+a:link {
+  text-decoration: none; }
+
+a:visited {
+  text-decoration: none; }
+
+a:hover {
+  text-decoration: underline; }
+
+a:active {
+  text-decoration: underline; }
+
 .nav-links {
   display: flex;
   margin-top: 5.5px;
@@ -68,6 +81,15 @@ nav {
   transform: translateX(100%);
   transition: transform 0.5s ease-in; }
 
+.backtotop {
+  text-decoration: none;
+  color: #b6c1c1;
+  font-size: 40px; }
+
+.social-links {
+  color: aliceblue; }
+
+/*  */
 .burger {
   cursor: pointer;
   margin-right: 500px; }
@@ -105,9 +127,6 @@ img {
   color: aliceblue;
   position: absolute;
   width: 100%; }
-
-.foot-links {
-  text-decoration: none; }
 
 .social {
   background-color: #b6c1c1;
@@ -147,8 +166,9 @@ img {
   color: aliceblue; }
 
 h1 {
-  color: white; }
+  color: black; }
 
+/* Dropdown menu styling */
 .dropdown {
   position: relative;
   display: inline-block; }
@@ -164,5 +184,17 @@ h1 {
 
 .dropdown:hover .dropdown-content {
   display: block; }
+
+/*  */
+.user {
+  width: 70px;
+  margin-right: 20px; }
+
+.cart-option {
+  list-style: none; }
+
+#cart-button {
+  text-decoration: none;
+  width: 70px; }
 
 /*# sourceMappingURL=style.css.map */

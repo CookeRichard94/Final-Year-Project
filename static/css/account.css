@@ -16,8 +16,7 @@ input[type=text], input[type=password] {
 .container {
   padding: 16px; }
 
-.modal {
-  display: none;
+.forms {
   position: fixed;
   z-index: 1;
   left: 0;
@@ -28,11 +27,11 @@ input[type=text], input[type=password] {
   background-color: #1c3535;
   padding-top: 50px; }
 
-.modal-content {
+.form-content {
   background-color: #fefefe;
   margin: 5% auto 15% auto;
   border: 1px solid #888;
-  width: 80%; }
+  width: 45%; }
 
 .account-register, .account-login {
   background-color: #1c3535;
@@ -47,9 +46,33 @@ hr {
   border: 1px solid #f1f1f1;
   margin-bottom: 25px; }
 
-.cancel, .create, .login {
+.cancel {
   width: 50%;
-  float: left; }
+  float: left;
+  font-size: 16px;
+  background-color: #eb9494;
+  color: white; }
+
+.create, .login {
+  width: 50%;
+  float: left;
+  background: #7dc9c9;
+  font-size: 16px;
+  color: white; }
+
+.back {
+  font-size: 30px;
+  text-decoration: none;
+  color: #eb6a6a; }
+
+button {
+  border: none;
+  color: black;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 20px; }
 
 .close {
   position: absolute;
@@ -69,8 +92,18 @@ hr {
   clear: both;
   display: table; }
 
+h2 {
+  font-size: 50px;
+  text-align: center; }
+
+.avatar {
+  width: 70px;
+  margin-right: 20px; }
+
 @media screen and (max-width: 200px) {
   .cancel, .create {
     width: 100%; } }
+.topbar {
+  background-color: red; }
 
 /*# sourceMappingURL=account.css.map */

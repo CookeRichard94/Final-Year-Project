@@ -1,21 +1,53 @@
 {% extends "store/extensions/base.html.jinja2" %}
+{% load static %}
 {% block title %}Home{% endblock %}
 {% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="{% static 'css/display-products.css' %}" type="text/css" />
+    <meta charset="UTF-8">
+</head>
+<body>
     <div>
         <h1>Products</h1>
         {% if request.user.is_superuser %}
             <a href="{% url 'add_product' %}">Add product</a><br><br>
         {% endif %}
-        <table border="4">
             <iframe name="foo" style="display: none;"></iframe>
             {% for product in products %}
+                <div class="main">
+                    <div class="image">
+                        <img src="../../../static/images/hoodie.png" class="item">
+                    </div>
+                    <div class="contents">
+                        <div class="p-name">
+                            {{ product.name }}
+                        </div>
+                        <div class="p-price">
+                            <h3>€{{ product.price }}</h3>
+                        </div>
+                        <div class="p-size">
+                            {{ product.size }}
+                        </div>
+                        <div class="p-quantity">
+                            <h4>Left in stock</h4>{{ product.quantity }}
+                        </div>
+                        <div class="p-details">
+                            <a href="{% url 'product_view' product.id %}">Detail</a>
+                        </div>
+                        <div>
+                            {% if request.user.username is not none and request.user.username != '' %}
+
+                                <button onclick="addToCart({{ product.pk }})">Add to cart</button>
+                                <button onclick="removeFromCart({{ product.pk }})">Remove from cart</button>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
                 <tr>
-                    <td>{{ product.name }}</td>
-                    <td>{{ product.price }}</td>
-                    <td>{{ product.size }}</td>
-                    <td>{{ product.quantity }}</td>
-                    <td>{{ product.img }}</td>
-                    <td><a href="{% url 'product_view' product.id %}">Detail</a></td>
+
                     {% if request.user.is_superuser %}
                         <td><a href="{% url 'product_view' product.id %}?edit=1">Edit</a></td>
                         {#                    <td><a href="{% url 'product_view' product.id %}?delete=1">Delete</a></td>#}
@@ -25,21 +57,20 @@
                             </button>
                         </td>
                     {% endif %}
-                    {% if request.user.username is not none and request.user.username != '' %}
-                        <td>
-                            <button onclick="addToCart({{ product.pk }})">Add to cart</button>
-                        </td>
-                        <td>
-                            <button onclick="removeFromCart({{ product.pk }})">Remove from cart</button>
-                        </td>
-                    {% endif %}
+{#                    {% if request.user.username is not none and request.user.username != '' %}#}
+{#                        <td>#}
+{#                            <button onclick="addToCart({{ product.pk }})">Add to cart</button>#}
+{#                        </td>#}
+{#                        <td>#}
+{#                            <button onclick="removeFromCart({{ product.pk }})">Remove from cart</button>#}
+{#                        </td>#}
+{#                    {% endif %}#}
                 </tr>
             {% empty %}
                 <tr>
                     <td colspan="4"><b>Data is empty! Please, add data first.</b></td>
                 </tr>
             {% endfor %}
-        </table>
     </div>
     <script>
         function delete_product(name, url) {
@@ -57,3 +88,5 @@
         }
     </script>
 {% endblock %}
+</body>
+</html>

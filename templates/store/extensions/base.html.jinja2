@@ -56,30 +56,30 @@
                 </div>
             </nav>
         </header>
-            {% if notifications %}
-                <div id="notifications">
-                        {% for message in notifications %}
-                            <div class="error-message">
-                                {{ message }}
-                            </div>
-                        {% endfor %}
-                </div>
-            {% endif %}
+{#            {% if notifications %}#}
+{#                <div id="notifications">#}
+{#                        {% for message in notifications %}#}
+{#                            <div class="error-message">#}
+{#                                {{ message }}#}
+{#                            </div>#}
+{#                        {% endfor %}#}
+{#                </div>#}
+{#            {% endif %}#}
+{##}
+{#            <div id="cart">#}
+{##}
+{#                    <ul id="cart">Cart empty</ul>#}
+{#            </div>#}
 
-            <div id="cart">
-
-                    <ul id="cart">Cart empty</ul>
-            </div>
-
-            <div id="header">
-                    {% if request.user.username is not none and request.user.username != '' %}
-                        <h1> Hello {{ request.user.username }}</h1>
-
-                    {% elif request.user.username is none or request.user.username == '' %}
-                        <h4>You are not logged in</h4>
-                        <h5>You must be logged in to add to cart!</h5>
-                    {% endif %}
-            </div>
+{#            <div id="header">#}
+{#                    {% if request.user.username is not none and request.user.username != '' %}#}
+{#                        <h1> Hello {{ request.user.username }}</h1>#}
+{##}
+{#                    {% elif request.user.username is none or request.user.username == '' %}#}
+{#                        <h4>You are not logged in</h4>#}
+{#                        <h5>You must be logged in to add to cart!</h5>#}
+{#                    {% endif %}#}
+{#            </div>#}
 
             {% block content %}{% endblock %}
 

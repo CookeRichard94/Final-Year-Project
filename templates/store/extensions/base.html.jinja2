@@ -15,12 +15,12 @@
                 </div>
                 <ul class="nav-links">
                     <li class="dropdown">
-                        <img src="../../../static/images/user.png" class="user">
+                        <img src="{% static 'images/user.png' %}" class="user" alt="user">
                         <div class="dropdown-content">
                             <!-- Dropdown options for Login/Register or Logout/Profile -->
                             {% if request.user.username is none or request.user.username == '' %}
-                                <a href="{% url 'login_view' %}" class="account-register" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Sign-In</a>
-                                <a href="{% url 'register' %}" class="account-login" onclick="document.getElementById('id02').style.display='block'" style="width:auto;">Register</a>
+                                <a href="{% url 'login_view' %}" class="account-login" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Sign-In</a>
+                                <a href="{% url 'register' %}" class="account-register" onclick="document.getElementById('id02').style.display='block'" style="width:auto;">Register</a>
                             {% endif %}
                             {% if request.user.username is not none and request.user.username != '' %}
                                 <a href="#" onclick="document.getElementById('logout').submit()">Logout</a>
@@ -29,31 +29,30 @@
                             {% endif %}
                         </div>
                     </li>
-                </ul>
-                <ul class="cart-option">
-                    <li>
-                            <img src="../../../static/images/cart.png" id="cart-button" alt="cart">
+                    <li class="cart-option">
+                        <img src="{% static 'images/cart.png' %}" id="cart-button" alt="cart">
                     </li>
                 </ul>
-                <ul class="side-links">
-                    <li>
-                        <a href="#">Accessories</a>
-                    </li>
-                    <li>
-                        <a href="#">Brands</a>
-                    </li>
-                    <li>
-                        <a href="#">Clothing</a>
-                    </li>
-                    <li>
-                        <a href="#">Footwear</a>
-                    </li>
-                </ul>
-                <div class="burger">
-                    <div class="line1"></div>
-                    <div class="line2"></div>
-                    <div class="line3"></div>
-                </div>
+
+{#                <ul class="side-links">#}
+{#                    <li>#}
+{#                        <a href="#">Accessories</a>#}
+{#                    </li>#}
+{#                    <li>#}
+{#                        <a href="#">Brands</a>#}
+{#                    </li>#}
+{#                    <li>#}
+{#                        <a href="#">Clothing</a>#}
+{#                    </li>#}
+{#                    <li>#}
+{#                        <a href="#">Footwear</a>#}
+{#                    </li>#}
+{#                </ul>#}
+{#                <div class="burger">#}
+{#                    <div class="line1"></div>#}
+{#                    <div class="line2"></div>#}
+{#                    <div class="line3"></div>#}
+{#                </div>#}
             </nav>
         </header>
 {#            {% if notifications %}#}
@@ -88,19 +87,19 @@
                 <div class="foot-links">
                     <ul>
                         <li>
-                            <a href="https://www.instagram.com/niemaattarian/?hl=en"><img src="../../../static/images/insta.png" alt="instagram" width="40px" height="40px"></a>
+                            <a href="https://www.instagram.com/niemaattarian/?hl=en"><img src="{% static 'images/insta.png' %}" width="40px" height="40px"></a>
                         </li>
                         <li>
-                            <a href="https://github.com/niemaattarian/Final-Year-Project"><img src="../../../static/images/git.png" alt="github" width="40px" height="40px"></a>
+                            <a href="https://github.com/niemaattarian/Final-Year-Project"><img src="{% static 'images/git.png' %}" alt="github" width="40px" height="40px"></a>
                         </li>
                         <li>
-                            <a href="https://www.facebook.com"><img src="../../../static/images/fb.png" alt="facebook" width="40px" height="40px"></a>
+                            <a href="https://www.facebook.com"><img src="{% static 'images/fb.png' %}" alt="facebook" width="40px" height="40px"></a>
                         </li>
                         <li>
-                            <a href="https://twitter.com"><img src="../../../static/images/twitter.png" alt="twitter" width="40px" height="40px"></a>
+                            <a href="https://twitter.com"><img src="{% static 'images/twitter.png' %}" alt="twitter" width="40px" height="40px"></a>
                         </li>
                         <li>
-                            <a href="https://www.snapchat.com"><img src="../../../static/images/snap.png" alt="snapchat" width="40px" height="40px"></a>
+                            <a href="https://www.snapchat.com"><img src="{% static 'images/snap.png' %}" alt="snapchat" width="40px" height="40px"></a>
                         </li>
                     </ul>
                 </div>
@@ -124,7 +123,7 @@
                     </ul>
                 </div>
                 <div>
-                    <a href="#" class="backtotop">🢁</a>
+                    <a href="#" class="back-to-top">🢁</a>
                 </div>
             </nav>
         </footer>

@@ -51,14 +51,21 @@ hr {
   float: left;
   font-size: 16px;
   background-color: #eb9494;
-  color: white; }
+  color: white;
+  border: none;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 20px; }
 
 .create, .login {
   width: 50%;
   float: left;
   background: #7dc9c9;
   font-size: 16px;
-  color: white; }
+  color: white;
+  cursor: pointer; }
 
 .back {
   font-size: 30px;
@@ -67,7 +74,7 @@ hr {
 
 button {
   border: none;
-  padding: 20px;
+  padding: 18px;
   text-align: center;
   text-decoration: none;
   display: inline-block;

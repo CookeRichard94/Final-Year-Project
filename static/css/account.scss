@@ -56,6 +56,12 @@ hr {
   font-size: 16px;
   background-color: #eb9494;
   color: white;
+  border: none;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 20px;
 }
 
 .create, .login {
@@ -64,6 +70,7 @@ hr {
   background: #7dc9c9;
   font-size: 16px;
   color: white;
+  cursor: pointer;
 }
 
 .back{
@@ -74,7 +81,7 @@ hr {
 
 button{
   border: none;
-  padding: 20px;
+  padding: 18px;
   text-align: center;
   text-decoration: none;
   display: inline-block;

@@ -68,4 +68,20 @@ hr {
   width: 25px;
   height: 25px; }
 
+.disabled-button {
+  background-color: #525252;
+  color: white;
+  border: none;
+  text-align: center;
+  font-size: 22px;
+  font-weight: bold;
+  padding: 12px;
+  text-decoration: none;
+  border-radius: 20px;
+  width: 100%; }
+
+.warning {
+  font-size: 15px;
+  color: #f44336; }
+
 /*# sourceMappingURL=display-products.css.map */

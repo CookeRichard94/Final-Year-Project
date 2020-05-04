@@ -20,9 +20,10 @@ nav {
 
 .logo {
   color: aliceblue;
-  font-size: 60px;
-  margin-top: 5px;
-  margin-left: 500px; }
+  font-size: 60px; }
+
+.cart-option {
+  margin-top: -7px; }
 
 /* Links Styling */
 a:link {
@@ -40,8 +41,7 @@ a:active {
 .nav-links {
   display: flex;
   margin-top: 5.5px;
-  width: 7%;
-  margin-left: 850px; }
+  width: 7%; }
 
 .nav-links li {
   list-style: none; }
@@ -52,36 +52,7 @@ a:active {
   letter-spacing: 3px;
   font-weight: bold; }
 
-.side-links li {
-  list-style: none;
-  opacity: 0;
-  height: 35%;
-  margin-top: 20px; }
-
-.side-links a {
-  text-decoration: none;
-  color: aliceblue;
-  letter-spacing: 3px;
-  font-weight: bold; }
-
-.side-links {
-  color: aliceblue;
-  text-decoration: none;
-  letter-spacing: 3px;
-  font-weight: bold;
-  position: absolute;
-  right: 0;
-  height: 92vh;
-  top: 8vh;
-  background-color: #2F4F4F;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 30%;
-  transform: translateX(100%);
-  transition: transform 0.5s ease-in; }
-
-.backtotop {
+.back-to-top {
   text-decoration: none;
   color: #b6c1c1;
   font-size: 40px; }
@@ -90,17 +61,6 @@ a:active {
   color: aliceblue; }
 
 /*  */
-.burger {
-  cursor: pointer;
-  margin-right: 500px; }
-
-.burger div {
-  width: 40px;
-  height: 8px;
-  background-color: aliceblue;
-  margin: 4.8px;
-  transition: all 0.3s ease; }
-
 .nav-active {
   transform: translateX(0%); }
 
@@ -145,7 +105,8 @@ img {
   list-style: none;
   text-decoration: none;
   float: left;
-  width: 100px; }
+  width: 100px;
+  margin-right: 40px; }
 
 .cart-links {
   display: flex;
@@ -178,9 +139,10 @@ h1 {
   position: absolute;
   background-color: #1c3535;
   min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
   padding: 12px 16px;
-  z-index: 1; }
+  z-index: 1;
+  font-size: 20px; }
 
 .dropdown:hover .dropdown-content {
   display: block; }

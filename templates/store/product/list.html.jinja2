@@ -13,8 +13,6 @@
         <div id="header">
                     {% if request.user.username is not none and request.user.username != '' %}
                         <h1> Hello {{ request.user.username }}</h1>
-                    {% elif request.user.username is none or request.user.username == '' %}
-                        <h4>You are not logged in</h4>
                     {% endif %}
             </div>
         <!-- Add a new product button -->

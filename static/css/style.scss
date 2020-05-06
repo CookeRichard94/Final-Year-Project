@@ -224,6 +224,7 @@ h1 {
   padding: 12px 16px;
   z-index: 1;
   font-size: 20px;
+  right: 0;
 }
 
 .dropdown:hover .dropdown-content {
@@ -236,11 +237,47 @@ h1 {
   margin-right: 20px;
 }
 
-.cart-option{
-  list-style: none;
+.cart-header{
+  font-size: 35px;
 }
 
-#cart-button{
- text-decoration: none;
+.cart-button{
+  background-color: blue;
+  border: none;
   width: 70px;
+  height: 70px;
+}
+
+.cart-option{
+  list-style: none;
+  position: relative;
+  display: inline-block;
+}
+
+.cart-content{
+  display: none;
+  position: absolute;
+  background-color: #adadac;
+  min-width: 270px;
+  overflow: auto;
+  text-align: center;
+  padding: 10px;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+#cart{
+  color: black;
+  display: block;
+}
+
+.show {display: block;}
+
+.divider{
+  color: lightgray;
+  margin-top: -15px;
+  margin-bottom: 10px;
+}
+
+.login-error{
+  color: #f44336;
 }

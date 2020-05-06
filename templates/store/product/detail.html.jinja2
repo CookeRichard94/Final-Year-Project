@@ -40,9 +40,9 @@
                     </div>
                     <div>
                         {% if request.session.username is not none and request.session.username != '' %}
-                            <button onclick="addToCart({{ product.pk }})" class="add-to-cart">Add to cart <img src="{% static 'images/cart.png' %}" class="cart-icon"></button>
-{#                        {% elif request.user.username is none or request.user.username == '' %}#}
-{#                            <h5 class="warning">You must be logged in to add to cart!</h5>#}
+                            <button onclick="addToCart({{ product.pk }})" class="add-to-cart">Add to cart <img src="{% static 'images/cart.png' %}" class="cart-icon" alt="cart-icon"></button>
+                        {% elif request.user.username is none or request.user.username == '' %}
+                            <h5 class="warning">You must be logged in to add to cart!</h5>
                         {% endif %}
                     </div>
                 </div>

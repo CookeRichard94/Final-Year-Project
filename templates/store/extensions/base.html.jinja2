@@ -29,11 +29,21 @@
                             {% endif %}
                         </div>
                     </li>
+
                     <li class="cart-option">
-                        <img src="{% static 'images/cart.png' %}" id="cart-button" alt="cart">
+                        <button onclick="cartFunction()" class="cart-button">cart icon</button>
+                        <div id="cart-items" class="cart-content">
+                            <h1 class="cart-header">Cart</h1>
+                            <h2 class="divider">__________________</h2>
+                            {% if request.user.username is none or request.user.username == '' %}
+                                <h4 class="login-error">You are not logged in</h4>
+                            {% endif %}
+                            <div id="cart">
+
+                            </div>
+                        </div>
                     </li>
                 </ul>
-
 {#                <ul class="side-links">#}
 {#                    <li>#}
 {#                        <a href="#">Accessories</a>#}
@@ -80,8 +90,7 @@
 {#                    {% endif %}#}
 {#            </div>#}
 
-            {% block content %}{% endblock %}
-
+        {% block content %}{% endblock %}
         <footer class="foot">
             <nav class="social">
                 <div class="foot-links">
@@ -165,7 +174,7 @@
                         success: function (data) {
                             console.log(data);
                             listElement = document.getElementById("cart");
-                            listElement.innerHTML = ""
+                            listElement.innerHTML = "";
                             var total = 0;
                             data.forEach(function (product) {
                                 {#var stock = document.createElement("stock");#}
@@ -179,16 +188,35 @@
                                 {#ct.innerText = total;#}
                                 {#listElement.appendChild(ct);#}
                                 var btn = document.createElement("button")
-                                btn.innerHTML = 'remove';
-                                btn.addEventListener("click", function(){removeFromCart(product.pk)})
+                                btn.innerHTML = 'X';
+                                btn.addEventListener("click", function(){removeFromCart(product.pk)});
                                 listElement.appendChild(btn);
-                            })
-                            listElement.append("Total cart cost: €"+ (total).toFixed(2));
+                            });
+                            listElement.append("\n new line\t               " + "Cart total: €"+ (total).toFixed(2));
                         }
                     });
                 }
                 updateCart();
 
+                /* When the user clicks on the button,
+                toggle between hiding and showing the dropdown content */
+                function cartFunction() {
+                  document.getElementById("cart-items").classList.toggle("show");
+                }
+
+                // Close the dropdown if the user clicks outside of it
+                window.onclick = function(event) {
+                  if (!event.target.matches('.cart-button')) {
+                    var dropdowns = document.getElementsByClassName("cart-content");
+                    var i;
+                    for (i = 0; i < dropdowns.length; i++) {
+                      var openDropdown = dropdowns[i];
+                      if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                      }
+                    }
+                  }
+                }
             </script>
         </div>
     </body>

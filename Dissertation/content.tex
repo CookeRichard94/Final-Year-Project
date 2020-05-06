@@ -1,0 +1,201 @@
+%!TEX root = project.tex
+
+\chapter*{About this project}
+\paragraph{Abstract}
+A brief description of what the project is, in about two-hundred and fifty words.
+
+\paragraph{Authors}
+This final year project was designed and built by Mark Gill and Niema Attarian, final year students of Software Development attending Galway-Mayo Institute of Technology.
+
+
+\chapter{Introduction}
+
+   
+\section{Objectives of the project}
+The objective we set out to accomplish in this project was to put in place what we learned over the previous three years into an e-commerce application. We planned on doing this using technologies we were familiar with and technologies we had little experience with. We did this to test our ability by adapting to various tasks presented to us. This approach was also done to increase our understanding of something unfamiliar to us.
+
+This project was divided into two parts; a detailed minor dissertation and an applied project. 
+
+The objectives for the dissertation are as follows;
+\newline
+\newline
+\textbf{Dissertation}
+\begin{itemize}
+  \item \textbf{\textit{Outline the basic concept}} We will discuss the concept of this project, diving in-depth into the inspiration behind the project and why specific choices were made.
+  \item \textbf{\textit{Understand the technologies used}} hello
+  \item \textbf{\textit{Detail of the development of the project}} hello
+\end{itemize}
+
+\subsection{User requirements of the project}
+In developing this project, we discussed amongst ourselves and our project supervisor what specific user requirements were necessary for an online commercial clothing website. Below is a list of user requirements agreed upon and implemented.
+\newline
+\newline
+\textbf{Requirements:}
+\begin{itemize}
+  \item Must be able to register a user.
+  \item Must be able to log in and log out.
+  \item Log in must carry across each page.
+  \item User can select an item to view on a item details page
+  \item User can add items to the cart
+  \item User can remove items from cart
+  \item User can view their details on a profile page
+  \item Must be able to edit user details
+\end{itemize}
+
+\section{Breakdown of each chapter}
+This dissertation is broken down into different required chapters. Each chapter contains different aspects of the project in great detail. The following sub-sections detail what each of these chapters are and what they entail.
+
+\subsection{Context}
+Context, chapter 2, discusses why the idea was chosen for this project. This chapter also goes into further detail the background, environment and setting of our idea.
+
+\subsection{Methodology}
+In methodology, chapter 3, we will describe the procedures of how we went about doing our project. This involves what planning was put in place, how we organised, managed and developed this project. We will briefly describe the the various technologies, frameworks and platforms chosen and why they we chosen over others.
+
+\subsection{Technology Review}
+Technology review, chapter 4, will outline the technological aspect of the project. This includes a breakdown, in depth, of each of the technologies used at a conceptual level. It will describe how these technologies were implemented and why a specific technology was chosen over another.
+
+\subsection{System Design}
+System design, chapter 5, describes the how of the project. We will detail the components of the projects and why we implemented each of them. Furthermore, these components will be described in detail with aid of diagrams and screenshots.
+
+\subsection{System Evaluation}
+In system evaluation, chapter 6, will outline the robustness of our project. This was done through testing using frameworks such as Selenium which we were familiar with. Also expressed in this chapter is the scalability of this project. A run down of what could possibly be improved in the project and all the limitations we faced in building it.
+
+\subsection{Conclusion}
+Finally, the conclusion will briefly review 
+
+List the resource URL (GitHub address) for the project and provide a brief list of the main elements at the URL.
+
+\section{GitHub Repository}
+As this project was a collaborative effort, each member agreed that GitHub would be an adequate version control. GitHub is a development platform allowing users to host and review code and work in a collaborative manner. The benefits of this platform is discussed in great detail in *Chapter 3, Methodology*. Our repository can be found at: https://github.com/niemaattarian/Final-Year-Project 
+
+\chapter{Context}
+
+Online shopping has grown drastically over the past two decades. Since the introduction of the World Wide Web the consumer use became a possibility which created a promising market for retailers. In 1995, retailers like Amazon and eBay were introduced to the online market. Amazon launched initially as a as an online book seller. It was considered to arguably be the online market maker which paved the way for online shopping in years to come[]. The launch of eBay was also influential for the online market industry as, like Amazon, they created a platform for the sale of items online which eventually introduced an auctioning system into the mainstream commercial websites we see today.
+
+\section{Context of the project}
+Our decision to plan and build a commercial clothing website was largely influenced by many well known clothing sites such as ASOS, Depop and JD Sports. These websites attract millions of consumers worldwide. The success of these sites are essentially down to the wide availability of the site and the items they sell, the simple aesthetic of each of these websites and the scalability of each of these sites. Over time, they are open to the change in demand from consumers which can change rapidly in today's climate. 
+
+\subsection{Business Model}
+
+Although many commercial sites can very between consumer-to-consumer like Depop, business-to-consumer like JD Sports or both consumer/business-to-consumer like ASOS, we decided that our best approach would be a business-to-consumer project. The reasoning behind this choice was based on research we did into the differences between these business models and found many appealing advantages to the business-to-consumer model. With these advantages, however, came some challenges involved with this model.
+
+\subsubsection{Capabilities of the Business-to-Consumer model}
+\paragraph{Availability}One of the most appealing advantages is the ability to provide a product to the consumers in real-time. Essentially a product provided by a company of this type is available 24 hours a day, 7 days a week 365 days a year. This includes customization of goods to match the varying demands of a market[2].
+
+\paragraph{De-Intermediation}This aids in eliminating the so called 'middle-man' between a manufacturer and consumer offering a simple distribution and differentiation based on consumer needs aiding in potential costs and profits[2].
+
+\paragraph{Collaboration}This aids in collaborating with other parties to help further the business. An example of this may include integrating a payment API such as PayPal or Venmo. This can help ensuring a greater deal of security and supporting real-time exchange of consumer information[2].
+
+\subsubsection{Challenges of the Business-to-Consumer model}
+\paragraph{Redesign of business}Although very adaptable as previously discussed, with a varying demand among consumers and strong competition comes a constant redesign of the business. This can range from the products being sold down to the ergonomics of the website itself. To become a successful business re-designing must be well implemented on every scale.
+
+\paragraph{Matching technology to business needs}A major problem many business-to-consumer companies face is that of matching the technological needs of a business. This comes with a rapidly expanding market where technologies are adapting at enormous rates and this problem is exasperated further by the flood of new products to a market. 
+
+
+
+    
+
+\chapter{Methodology}
+This chapter will detail the approach and procedures we took to complete this project. This includes the planning, meetings, management and organisation that was put in place by us and our advisors to tackle this project effectively. Furthermore, this chapter will also outline the various technologies that we reviewed and agreed upon for our project. Finally, we conclude this chapter detailing the type of testing we proposed would fit the project.
+
+\section{Incremental and iterative approach to development}
+Initially, when this project began with three members, we discussed how we would break down our idea both between us and with our project supervisor. Our first idea consisted of a commercial Angular application, similar to that of a business to consumer application like Amazon or eBay. Our idea consisted of a front-end, back-end, a neural network which took in a picture that identified a particular product like shoes, a t-shirt, etc and the cloud hosting. Along with advice from our supervisor,  we agreed on sharing the responsibility of the project as equally as possible with Niema designing the front-end of the application, Mark coding the back-end of the application, Richard in charge of the neural network and the cloud hosting being a final addition towards the end of this project.
+
+We met two-to-three times as week as a group to discuss our approach and any issues we had. We also routinely had weekly meetings, on a Monday morning, with our supervisor Gerard to discuss ideas, frameworks and various methods on how to approach this project. We would detail our progression in these meetings with Gerard and also mention any outstanding issues.
+We kept a very open mindset in developing our project. This was clear in our idea choice. It was extremely versatile which helped with any suggested changes or approaches which differed from our base idea. 
+
+However, as the weeks continued and further discussion with our supervisor, we mutually agreed that our idea and workload was not sufficient for a three person group. Therefore, we disbanded into a two-person group of Niema and Mark. Following the advice of our supervisor, we discussed how we would restructure our project and re-assign the workload evenly. The scope of the project barely changed with the only difference being the removal of the neural network aspect. We did, however, decide to change the language we planned on developing the application from Angular to Django.
+
+\section{Selection criteria for Technologies, Frameworks and Platforms}
+
+\subsection{Technologies}
+\paragraph{TypeScript}
+Our initial approach included using TypeScript[1] to build our commercial application. We believed that this language was best suited for our project as it is essentially super-set of JavaScript, a language we are familiar with and have used consistently over our four years of software development. It has the ability to enable easier development on a large scale which was essential to our versatile and expandable idea\cite{bierman_abadi_torgersen_2014}.
+
+\paragraph{Python}
+
+
+\paragraph{HTML}
+HTML was agreed upon for the front-end of the project. This choice was made mainly for it's simplicity. It is easily implemented and designed.
+
+\paragraph{CSS}
+CSS was agreed upon for the design of the front-end of the project. This choice was made mainly for it's simplicity. 
+
+\paragraph{JavaScript}
+This choice was made mainly for it's simplicity.
+
+\subsection{Frameworks}
+\paragraph{Angular}
+With our first ideas development including TypeScript, we found that Angular[] to be the best framework for our large-scale, single page application. Angular was a familiar framework to us, one that we have used for the course of two years.  
+
+\paragraph{Django}
+
+
+\paragraph{Flask}
+
+
+\subsection{Platforms}
+\paragraph{GitHub}
+As a team based final-year project, we unanimously agreed that GitHub\cite{github} would be best suited to manage our project. This decision was without hesitation as GitHub was used widely in our four years of studying Software Development. GitHub is widely used amongst every profession of software development and it is evident that the platform has helped improve the way in which software professionals work and collaborate\cite{zagalsky2015emergence}.
+
+\section{What about validation and testing?}
+Testing the application was very important to us. We wanted to ensure that it functioned smoothly and accurately. We were torn on the various ways to test our application; from using Cucumber testing, JUnit tests or the Selenium framework.
+
+We concluded that Selenium would be the preferred testing framework to test our application.
+
+
+\chapter{Technology Review}
+About seven to ten pages.
+\begin{itemize}
+\item Describe each of the technologies you used at a conceptual level. Standards, Database Model (e.g. MongoDB, CouchDB), XMl, WSDL, JSON, JAXP.
+\item Use references (IEEE format, e.g. [1]), Books, Papers, URLs (timestamp) – sources should be authoritative. 
+\end{itemize}
+
+\section{XML}
+Here's some nicely formatted XML:
+\begin{minted}{xml}
+<this>
+  <looks lookswhat="good">
+    Good
+  </looks>
+</this>
+\end{minted}
+
+\chapter{System Design}
+As many pages as needed.
+\begin{itemize}
+\item Architecture, UML etc. An overview of the different components of the system. Diagrams etc… Screen shots etc.
+\end{itemize}
+
+\begin{table}[h]
+  \centering
+  \begin{tabular}{x{2cm}p{3cm}}
+    \toprule \\
+    Column 1 & Column 2 \\
+    \midrule \\
+    Rows 2.1 & Row 2.2 \\
+    \bottomrule
+  \end{tabular}
+  \caption{A table.}
+  \label{table:mytable}
+\end{table}
+
+\chapter{System Evaluation}
+As many pages as needed.
+\begin{itemize}
+\item Prove that your software is robust. How? Testing etc. 
+\item Use performance benchmarks (space and time) if algorithmic.
+\item Measure the outcomes / outputs of your system / software against the objectives from the Introduction.
+\item Highlight any limitations or opportunities in your approach or technologies used.
+\end{itemize}
+
+\chapter{Conclusion}
+About three pages.
+
+\begin{itemize}
+\item Briefly summarise your context and ob-jectives (a few lines).
+\item Highlight your findings from the evalua-tion section / chapter and any opportuni-ties identified.
+\end{itemize}
+
+https://help.github.com/en/desktop
+

@@ -34,24 +34,34 @@
                 </button>
                 {% endif %}
             </div>
+
             <!-- Displays items -->
             <div>
                 <a href="{% url 'product_view' product.id %}" class="product-link">
-                    <img src="{% static 'images/hoodie.png' %}" class="item">
-                    <div class="product-name">
-                        {{ product.name }}
-                    </div>
-                    <div class="product-price">
-                        €{{ product.price }}
+                    <div class="product-image">
+                        {% if product.image.url != NULL %}
+                            <img src="{{ product.image.url }}" alt="{{ product.name }}" width="30%">
+                        {% endif %}
+
+                        <div class="product-name">
+                            {{ product.name }}
+                        </div>
+                        <div class="product-price">
+                            €{{ product.price }}
+                        </div>
                     </div>
                 </a>
             </div>
+
+            <!-- Consumer buttons -->
+            {% if request.user.username is not none and request.user.username != '' %}
+                <button onclick="addToCart({{ product.pk }})">Add to cart</button>
+            {% endif %}
         </div>
 
     {% empty %}
             <!-- Empty Message -->
             <h1 class="empty-message">There are no items to display. Please add items!</h1>
-
     {% endfor %}
 
 

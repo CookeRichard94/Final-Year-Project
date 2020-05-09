@@ -15,7 +15,11 @@
             <iframe name="foo" style="display: none;"></iframe>
             <div class="main">
                 <div class="image">
-                    <img src="{% static 'images/hoodie.png' %}" class="item">
+                    {% if product.image.url != NULL %}
+                            <img src="{{ product.image.url }}" alt="{{ product.name }}" width="100%">
+                    {% else %}
+                        {{ product.name }}
+                    {% endif %}
                 </div>
                 <div class="contents">
                     <div class="item-name">
@@ -39,7 +43,7 @@
                         <h3>Left in stock</h3>{{ product.quantity }}
                     </div>
                     <div>
-                        {% if request.session.username is not none and request.session.username != '' %}
+                        {% if request.user.username is not none and request.user.username != '' %}
                             <button onclick="addToCart({{ product.pk }})" class="add-to-cart">Add to cart <img src="{% static 'images/cart.png' %}" class="cart-icon" alt="cart-icon"></button>
                         {% elif request.user.username is none or request.user.username == '' %}
                             <h5 class="warning">You must be logged in to add to cart!</h5>

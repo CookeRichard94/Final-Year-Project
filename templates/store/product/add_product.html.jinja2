@@ -18,7 +18,11 @@
         </div>
     </div>
 
-    <form class="product" method="POST">{% csrf_token %}
+    <form class="product" method="POST" enctype="multipart/form-data">{% csrf_token %}
+        <div class="form-group">
+            <label for="select_image">Image:</label>
+            <input type="file" id="select_image" name="image" accept="image/*" placeholder="stock.jpg">
+        </div>
         <div class="form-group">
             <label for="name">Name</label>
             <br>
@@ -36,7 +40,7 @@
             <br>
             <select id="select_size">
                 <option value="S">Small</option>
-                <option value="M">Medium</option>
+                <option selected value="M">Medium</option>
                 <option value="L">Large</option>
             </select>
         </div>
@@ -50,14 +54,14 @@
         <input class="submit" type="submit" value="Add product">
 
         <script>
-            $(function () {
-                $("#select_size").change(function () {
-                    var e = document.getElementById("select_size");
-                    {#console.log(e.options[e.selectedIndex].value);#}
-                    document.getElementById("size").setAttribute("value", e.options[e.selectedIndex].value);
-                });
-            });
-        </script>
+    $(function () {
+        $("#select_size").change(function () {
+            var e = document.getElementById("select_size");
+            {#console.log(e.options[e.selectedIndex].value);#}
+            document.getElementById("size").setAttribute("value", e.options[e.selectedIndex].value);
+        });
+    });
+</script>
     </form>
     </body>
 </html>

@@ -1,4 +1,4 @@
-{% extends "store/extensions/base.html.jinja" %}
+{% extends "store/extensions/base.html.jinja2" %}
 {% block title %}Home{% endblock %}
 {% block content %}
     <div>
@@ -14,7 +14,11 @@
                     <td>{{ product.price }}</td>
                     <td>{{ product.size }}</td>
                     <td>{{ product.quantity }}</td>
-                    <td>{{ product.img }}</td>
+                    {% if product.image.url != NULL %}
+                        <td><img src="{{ product.image.url }}" alt="{{ product.name }}" width="50%"></td>
+                    {% else %}
+                        <td><img src="" alt="{{ product.name }}" width="50%"></td>
+                    {% endif %}
                     <td><a href="{% url 'product_view' product.id %}">Detail</a></td>
                     {% if request.user.is_superuser %}
                         <td><a href="{% url 'product_view' product.id %}?edit=1">Edit</a></td>

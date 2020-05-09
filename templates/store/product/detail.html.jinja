@@ -1,8 +1,11 @@
-{% extends "store/extensions/base.html.jinja" %}
+{% extends "store/extensions/base.html.jinja2" %}
 {% block title %}{{product.name}}{% endblock %}
 {% block content %}
     <a href="{% url 'list' %}">Back</a>
-
+    <br>
+    {% if product.image.url != NULL %}
+        <td><img src="{{ product.image.url }}" alt="{{ product.name }}" width="50%"></td>
+    {% endif %}
     <table>
         <iframe name="foo" style="display: none;"></iframe>
         <tr>

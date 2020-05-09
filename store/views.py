@@ -24,6 +24,7 @@ def product_view(request, pk):
             for key in keys:
                 setattr(product, key, request.POST[key])
             try:
+                # product.image = request.POST['image']
                 product.save()
             except ValidationError as e:
                 context["notifications"] = []
@@ -43,7 +44,7 @@ def add_product(request):
     if request.method == "GET":
         return render(request, 'store/product/add_product.html.jinja')
     elif request.method == "POST":
-        keys = ('name', 'size', 'price', 'quantity')
+        keys = ('name', 'size', 'price', 'quantity', 'image')
         if all((key in request.POST for key in keys)):
             product = Product.objects.create(**{key: request.POST[key] for key in keys})
             product.save()
@@ -51,22 +52,22 @@ def add_product(request):
 
 
 def view_user(request):
+    # user = User.objects.get(username=request.session.username)
     if request.method == "GET":
-        return render(request, 'customers/view_user.html.jinja')
+        if request.GET.get("edit") is not None:
+            return render(request, 'customers/edit_user.html.jinja')
+        else:
+            return render(request, 'customers/view_user.html.jinja')
     elif request.method == "POST":
-        keys = ('username', 'size', 'price', 'quantity')
-        if all((key in request.POST for key in keys)):
-            for key in keys:
-                setattr(product, key, request.POST[key])
-            try:
-                product.save()
-            except ValidationError as e:
-                context["notifications"] = []
-                #add validation
-                # print(e)
-                context["notifications"].append("Validation Error")
-                return render(request, 'store/product/edit_product.html.jinja',context)
-            return render(request, 'store/product/detail.html.jinja', context)
+        user = User.objects.get(pk=request.user.pk)
+        # if request.POST['username'] == User.objects.get(user.username):
+        user.username = request.POST['username']
+        user.first_name = request.POST['first_name']
+        user.last_name = request.POST['last_name']
+        user.email = request.POST['email']
+        user.save()
+        # user = authenticate(request, username=username, password=password)
+        return redirect(view_user)
 
 
 def index(request):
@@ -79,7 +80,6 @@ def login_view(request):
         password = request.POST['password']
 
         user = authenticate(request, username=username, password=password)
-
         if user is not None:
             login(request, user)
             return redirect('list')
@@ -92,18 +92,25 @@ def login_view(request):
 
 def register(request):
     if request.method == 'POST':
+        print(request.POST.keys())
         username = request.POST['username']
         password = request.POST['password']
+        first_name = request.POST['first_name']
+        last_name = request.POST['last_name']
+        email = request.POST['email']
+        password2 = request.POST['password2']
 
-        # User.objects.create_user
-        user = User.objects.create_user(username=username, password=password)
-        user.save()
-
-        user = authenticate(request, username=username, password=password)
+        if password == password2:
+            user = User.objects.create_user(username=username, password=password, first_name=first_name,
+                                            last_name=last_name, email=email)
+            user.save()
+            user = authenticate(request, username=username, password=password)
+        else:
+            redirect(index)
 
         if user is not None:
-            request.session['username'] = username
-            return redirect('list')
+            login(request, user)
+            return redirect('view_user')
 
         else:
             return redirect('login')

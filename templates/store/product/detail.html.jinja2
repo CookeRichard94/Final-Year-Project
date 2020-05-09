@@ -1,0 +1,53 @@
+{% extends "store/extensions/base.html.jinja2" %}
+{% load static %}
+{% block title %}{{product.name}}{% endblock %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="{% static 'css/display-products.css' %}" type="text/css" />
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <div>
+            <a href="{% url 'list' %}" class="back">🢀Back</a>
+            <iframe name="foo" style="display: none;"></iframe>
+            <div class="main">
+                <div class="image">
+                    <img src="{% static 'images/hoodie.png' %}" class="item">
+                </div>
+                <div class="contents">
+                    <div class="item-name">
+                        {{ product.name }}
+                    </div>
+                    <div class="item-price">
+                        <h3>€{{ product.price }}</h3>
+                    </div>
+                    <hr>
+                    <div class="item-shipping">
+                        <img src="{% static 'images/truck.png' %}" class="shipping"> <p>Free shipping <b>on all orders.</b></p>
+                    </div>
+                    <div class="item-returns">
+                        <img src="{% static 'images/truck.png' %}" class="return"> <p>Free returns <b>on all orders.</b></p>
+                    </div>
+                    <hr>
+                    <div class="item-size">
+                        <h3>Size</h3> {{ product.size }}
+                    </div>
+                    <div class="item-quantity">
+                        <h3>Left in stock</h3>{{ product.quantity }}
+                    </div>
+                    <div>
+                        {% if request.session.username is not none and request.session.username != '' %}
+                            <button onclick="addToCart({{ product.pk }})" class="add-to-cart">Add to cart <img src="{% static 'images/cart.png' %}" class="cart-icon" alt="cart-icon"></button>
+                        {% elif request.user.username is none or request.user.username == '' %}
+                            <h5 class="warning">You must be logged in to add to cart!</h5>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+{% endblock %}

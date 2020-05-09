@@ -1,0 +1,61 @@
+{% extends "store/extensions/base.html.jinja2" %}
+{% load static %}
+{% block title %}Edit {{ product.name }}{% endblock %}
+{% block content %}
+<html lang="en">
+    <head>
+       <link rel="stylesheet" href="{% static 'css/add-product.css' %}" type="text/css" />
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <div>
+            <div>
+                 <a href="{% url 'list' %}" class="back">🢀Back</a>
+            </div>
+            <div>
+                <h1>Edit product</h1>
+            </div>
+        </div>
+        <form class="product" method="POST" action={% url "product_view" product.id %}>{% csrf_token %}
+            <div class="form-group">
+                <label for="name">Name</label>
+                 <br>
+                <input type="text" id="name" name="name" value="{{ product.name }}">
+            </div>
+            <hr>
+            <div class="form-group">
+                <label for="price">Price €</label>
+                 <br>
+                <input type="number" id="price" name="price" value="{{ product.price }}">
+            </div>
+            <hr>
+            <div class="form-group">
+                <label for="select_size">Size</label>
+                <br>
+                <select id="select_size">
+                    <option value="S">Small</option>
+                    <option value="M">Medium</option>
+                    <option value="L">Large</option>
+                </select>
+            </div>
+            <hr>
+            <div class="form-group">
+                <label for="quantity">Quantity:</label>
+                 <br>
+                <input type="number" id="quantity" name="quantity" value="{{ product.quantity }}">
+            </div>
+            <input type="hidden" name="size" id="size" value="">
+            <input class="submit" type="submit" value="Confirm changes">
+            <script>
+                $(function () {
+                    $("#select_size").change(function () {
+                        var e = document.getElementById("select_size");
+                        {#console.log(e.options[e.selectedIndex].value);#}
+                        document.getElementById("size").setAttribute("value", e.options[e.selectedIndex].value);
+                    });
+                });
+            </script>
+        </form>
+    </body>
+</html>
+{% endblock %}

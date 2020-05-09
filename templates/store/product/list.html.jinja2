@@ -1,0 +1,76 @@
+{% extends "store/extensions/base.html.jinja2" %}
+{% load static %}
+{% block title %}Home{% endblock %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="{% static 'css/listing-products.css' %}" type="text/css" />
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <div id="header">
+                    {% if request.user.username is not none and request.user.username != '' %}
+                        <h1> Hello {{ request.user.username }}</h1>
+                    {% endif %}
+            </div>
+        <!-- Add a new product button -->
+        {% if request.user.is_superuser %}
+            <a href="{% url 'add_product' %}" class="admin-new-item">New Item +</a><br><br>
+        {% endif %}
+
+        <!-- Displays  -->
+        {% for product in products %}
+        <div class="product-listing">
+            <!-- Admin buttons -->
+            <div class="admin-buttons">
+                {% if request.user.is_superuser %}
+                <!-- Edit product button -->
+                <a href="{% url 'product_view' product.id %}?edit=1" class="admin-edit">Edit</a>
+                <!-- Delete product button -->
+                <button onclick="delete_product('{{ product.name }}', '{% url "product_view" product.pk %}')" class="admin-delete">
+                    Delete
+                </button>
+                {% endif %}
+            </div>
+            <!-- Displays items -->
+            <div>
+                <a href="{% url 'product_view' product.id %}" class="product-link">
+                    <img src="{% static 'images/hoodie.png' %}" class="item">
+                    <div class="product-name">
+                        {{ product.name }}
+                    </div>
+                    <div class="product-price">
+                        €{{ product.price }}
+                    </div>
+                </a>
+            </div>
+        </div>
+
+    {% empty %}
+            <!-- Empty Message -->
+            <h1 class="empty-message">There are no items to display. Please add items!</h1>
+
+    {% endfor %}
+
+
+
+        <script>
+            function delete_product(name, url) {
+                if (confirm("Are you sure you want to delete \"" + name + "\"?"))
+                    $.ajax({
+                        url: url,
+                        type: 'DELETE',
+                        success: function (result) {
+                            alert("Product Deleted");
+                        },
+                        headers: {
+                            'X-CSRFToken': '{{ csrf_token }}'
+                        },
+                    });
+            }
+        </script>
+    </body>
+</html>
+{% endblock %}

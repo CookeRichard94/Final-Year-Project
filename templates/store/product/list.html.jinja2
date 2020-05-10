@@ -53,10 +53,10 @@
                 </a>
             </div>
 
-            <!-- Consumer buttons -->
-            {% if request.user.username is not none and request.user.username != '' %}
-                <button onclick="addToCart({{ product.pk }})">Add to cart</button>
-            {% endif %}
+{#            <!-- Consumer buttons -->#}
+{#            {% if request.user.username is not none and request.user.username != '' %}#}
+{#                <button onclick="addToCart({{ product.pk }})">Add to cart</button>#}
+{#            {% endif %}#}
         </div>
 
     {% empty %}

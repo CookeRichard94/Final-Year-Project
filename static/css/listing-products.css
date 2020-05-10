@@ -71,4 +71,8 @@ a:active {
   color: darkred;
   margin: 50px 0 504px 50px; }
 
+#header {
+  text-align: center;
+  font-size: 27px; }
+
 /*# sourceMappingURL=listing-products.css.map */

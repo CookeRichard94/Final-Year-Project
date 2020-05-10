@@ -1,0 +1,33 @@
+.back {
+  padding: 10px;
+  font-size: 35px;
+  text-decoration: none;
+  color: #eb6a6a; }
+
+.forms {
+  text-align: center; }
+
+.submit {
+  background: #7dc9c9;
+  font-size: 16px;
+  color: white;
+  cursor: pointer;
+  border-radius: 20px;
+  border: none;
+  padding: 18px;
+  margin-bottom: 330px;
+  margin-top: 20px; }
+
+label {
+  font-size: 25px;
+  font-weight: bold;
+  margin: 20px 0; }
+
+input {
+  margin: 30px 0px;
+  font-size: 20px; }
+
+h1 {
+  margin-bottom: 30px; }
+
+/*# sourceMappingURL=editprofile.css.map */

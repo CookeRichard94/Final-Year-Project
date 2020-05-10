@@ -11,7 +11,7 @@
         <header>
             <nav>
                 <div class="logo">
-                    <h4>SHOP</h4>
+                    <h4>FABRIK</h4>
                 </div>
                 <ul class="nav-links">
                     <li class="dropdown">
@@ -31,7 +31,7 @@
                     </li>
 
                     <li class="cart-option">
-                        <button onclick="cartFunction()" class="cart-button">cart icon</button>
+                        <button onclick="cartFunction()" class="cart-button">&#9829;</button>
                         <div id="cart-items" class="cart-content">
                             <h1 class="cart-header">Cart</h1>
                             <h2 class="divider">__________________</h2>
@@ -114,7 +114,7 @@
                 </div>
             </nav>
             <nav class="bottom">
-                Shop © 2020
+                FABRIK © 2020
                 <div>
                     <ul>
                         <li>
@@ -192,7 +192,7 @@
                                 btn.addEventListener("click", function(){removeFromCart(product.pk)});
                                 listElement.appendChild(btn);
                             });
-                            listElement.append("\n new line\t               " + "Cart total: €"+ (total).toFixed(2));
+                            listElement.append("Cart total: €"+ (total).toFixed(2));
                         }
                     });
                 }

@@ -242,13 +242,23 @@ h1 {
 }
 
 .cart-button{
-  background-color: blue;
+  background-color: #2F4F4F;
   border: none;
   width: 70px;
   height: 70px;
+  font-size: 67px;
+  margin-top: -10px;
+  color: aliceblue;
+}
+
+.cart-button:active {
+  background-color: #2F4F4F;
+  color: #f44336;
+  text-decoration: none;
 }
 
 .cart-option{
+  background-color: #2F4F4F;
   list-style: none;
   position: relative;
   display: inline-block;
@@ -257,7 +267,7 @@ h1 {
 .cart-content{
   display: none;
   position: absolute;
-  background-color: #adadac;
+  background-color: #6eb8b8;
   min-width: 270px;
   overflow: auto;
   text-align: center;

@@ -75,6 +75,18 @@ def view_user(request):
 def index(request):
     return render(request, 'store/product/list.html.jinja2', {'products': Product.objects.all()})
 
+def about(request):
+    return render(request, 'footer/about.html.jinja2')
+
+def terms(request):
+    return render(request, 'footer/terms.html.jinja2')
+
+def privacy(request):
+    return render(request, 'footer/privacy.html.jinja2')
+
+def authors(request):
+    return render(request, 'footer/authors.html.jinja2')
+
 
 def login_view(request):
     if request.method == 'POST':

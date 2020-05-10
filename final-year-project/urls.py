@@ -20,6 +20,7 @@ from django.urls import path, include
 from store import views
 from store.views import *
 
+
 urlpatterns = [
     path('login', views.login_view, name='login_view'),
     path('logout', views.logout, name='logout'),
@@ -32,4 +33,8 @@ urlpatterns = [
     path('products/<int:pk>', product_view, name="product_view"),
     path('profile/', view_user, name="view_user"),
     path('add_product', add_product, name='add_product'),
+    path('about', about, name='about'),
+    path('terms', terms, name='terms'),
+    path('privacy', privacy, name='privacy'),
+    path('authors', authors, name='authors'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
